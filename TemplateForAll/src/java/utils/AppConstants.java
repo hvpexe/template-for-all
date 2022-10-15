@@ -16,8 +16,11 @@ public class AppConstants {
     }
     public class LoginFeatures {
         public static final String INVALID_PAGE = "loginPage";
-        public static final String HOME_PAGE = "homePage";
+        public static final String DISCOVER_PAGE = "displayDiscoverPage";
     }
-//    public class
+    public class DisplayDiscoverFeature {
+        public static final String DISCOVER_PAGE = "discoverPage";
+        
+    }
     
 }
