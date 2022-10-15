@@ -1,46 +1,3 @@
-*:before,*:after{
-    content:'';
-    position: absolute;
-
-}
-body{
-    min-height: 100vh;
-}
-h1 {
-    /* Heading/Bold/H3 */
-
-    font-family: 'Raleway',sans-serif;
-    font-style: normal;
-    font-weight: 700!important;
-    font-size: 48px!important;
-    line-height: 64px!important;
-    /* identical to box height, or 133% */
-
-    text-transform: capitalize;
-
-    /* Text/Tittle */
-
-    color: #1D2B4F;
-}
-.text{
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.7);
-}
-.text-bold{
-    font-weight: 600;
-    line-height: 30px;
-}
-.text-description{
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-
-    /* Text/Body */
-
-    color: #798196;
-}
 
 .header{
     width: 100%;
@@ -55,6 +12,9 @@ h1 {
     align-content: center;
     margin: auto;
     width: inherit;
+}
+.gap-10 {
+    gap:10px;
 }
 .header .header-navigation a{
     min-width: 80px;
@@ -122,14 +82,12 @@ h1 {
 
 .header .header-login{
     /* Auto layout */
-
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 16px 40px;
     gap: 10px;
     /* Color/Orange */
-
     background: #FF9E2C;
     border-radius: 8px;
 
