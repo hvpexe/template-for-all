@@ -24,21 +24,28 @@
                 <div class="section-left col-12 col-md-6  d-flex align-content-center justify-content-center">
                     <img src="assets/images/figma/Image-Placeholder.png" width="100%">
                 </div>
-                <form action="login" method="post" class="section-right col-12 col-md-6" id="main">
+
+                
+                <!--Login Form-->
+                <form action="loginController" class="section-right col-12 col-md-6" id="main" method="post">
                     <h1 class="h1">xin chào,</h1>
                     <div class="text-bold">Đăng nhập hoặc Đăng kí</div>
                     <div class="form-group col align-items-end pb-3 d-flex">
-                        <input class="" placeholder="Tên đăng nhập (6-20 kí tự)" name="username">
+                        <input type="text" class="" placeholder="Tên đăng nhập (6-20 kí tự)" name="txtUsername" value=""
+                               required/>
                     </div>
                     <div class="form-group col align-items-start pt-3 d-flex">
-                        <input class="" type="password" placeholder="Mật khẩu" name="password">
+
+                        <input type="password" class="" placeholder="Mật khẩu" name="txtPassword" value=""
+                               required/>
+
                     </div>
                     <div class="col d-flex flex-column">
                         <div class="col d-flex justify-content-between text-bold">
                             <span>Quên mật khẩu?</span>
                             <span>Chưa có tài khoản? <a href="#" onclick="changeRegister('#main')">Đăng kí</a></span>
                         </div>
-                        <button class="hb-1" type="submit">Tiếp tục</button>
+                        <button class="hb-1" type="submit">Đăng Nhập</button>
                     </div>
                     <div class="col row justify-content-center align-items-end  pt-3">
                         <span class="text-bold col-12 text-center">Hoặc đăng nhập bằng</span>
