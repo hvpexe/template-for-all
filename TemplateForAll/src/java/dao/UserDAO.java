@@ -18,7 +18,7 @@ import utils.DBConnection;
  * @author LamVo
  */
 public class UserDAO implements Serializable{
-    public UserDTO checkLogin(String username, String password)
+    public static UserDTO checkLogin(String username, String password)
             throws SQLException, ClassNotFoundException {
         Connection connection = null;
         PreparedStatement stm = null;
@@ -31,8 +31,7 @@ public class UserDAO implements Serializable{
                 //2. create sql string
                 String sql = "select U.id, U.username, U.firstName, U.isAdmin\n"
                         + "from [User] U\n"
-                        + "where U.username = ?"
-                        + "AND U.password = ?";
+                        + "where U.username = ? AND U.password = ?";
                 //3. create statement obj
                 stm = connection.prepareStatement(sql); // tao ra obj rong
                 stm.setString(1, username);
@@ -59,5 +58,13 @@ public class UserDAO implements Serializable{
             }
         }
         return result;
+    }
+    
+    public static void main(String[] args) {
+        try {
+                    System.out.println(checkLogin("lamlam", "123"));
+
+        } catch (Exception e) {
+        }
     }
 }

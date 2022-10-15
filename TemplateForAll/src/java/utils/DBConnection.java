@@ -14,19 +14,21 @@ import java.sql.SQLException;
  *
  * @author LamVo
  */
-public class DBConnection implements Serializable{
+public class DBConnection implements Serializable {
+
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection con = null;
         //1. load driver
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         //2. make connection string
-        String con_url = "jdbc:sqlserver://localhost:1433;database=TestTmplate;instanceName=SQLEXPRESS";
+        String con_url = "jdbc:sqlserver://localhost:1433;database=TemplateForAllDB;instanceName=SQLEXPRESS";
         //3. open connection
-        con = DriverManager.getConnection(con_url, "sa", "sa12345");
+        con = DriverManager.getConnection(con_url, "sa", "12345");
         //4. return conenction
         if (con != null) {
             System.out.println("=========connection ok=======");
         }
         return con;
     }
+
 }
