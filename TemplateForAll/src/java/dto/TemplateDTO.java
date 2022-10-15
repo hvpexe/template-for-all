@@ -19,6 +19,7 @@ public class TemplateDTO implements Serializable{
     int categoryId;
     String imgLink;
     String categoryName;
+    String description;
     //constructors
     public TemplateDTO() {
     }
@@ -38,6 +39,12 @@ public class TemplateDTO implements Serializable{
         this.price = price;
         this.imgLink = imgLink;
         this.categoryName = categoryName;
+    }
+    public TemplateDTO(String name, int price, String imgLink, String description) {
+        this.name = name;
+        this.price = price;
+        this.imgLink = imgLink;
+        this.description = description;
     }
     
     // getters
@@ -67,6 +74,10 @@ public class TemplateDTO implements Serializable{
     }
     public String getCategoryName() {
         return categoryName;
+    }
+    
+    public String getDescription() {
+        return description;
     }
     // setters
 
@@ -98,5 +109,8 @@ public class TemplateDTO implements Serializable{
         this.categoryName = categoryName;
     }
     
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
 }
