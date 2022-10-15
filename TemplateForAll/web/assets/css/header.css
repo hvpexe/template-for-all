@@ -2,6 +2,7 @@
 .header{
     width: 100%;
     height: 120px;
+    position: -webkit-sticky;
     position: sticky;
     display: flex;
 }

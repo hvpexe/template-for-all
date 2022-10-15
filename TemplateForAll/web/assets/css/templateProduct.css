@@ -31,14 +31,20 @@
 }
 .section .button{
     padding: 16px 40px;
+    font-size: 20px;
 }
 .section .button.cart{
     border: 1px solid #FF9E2C;
     border-radius: 8px;
     background: transparent;
-    
+
     /* Color/Orange */
     color: #FF9E2C;
+}
+.section .button.cart i{
+    position: relative;
+    top: -8px;
+    left:2px;
 }
 .template-header {
     margin-top: 110px;

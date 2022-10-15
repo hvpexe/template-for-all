@@ -12,11 +12,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Trang Sản Phẩm</title>
         <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="assets/css/universalStyles.css"/>
         <link rel="stylesheet" href="assets/css/animation.css"/>
         <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
         <script src="Jquery-core-3.0.2/jquery.js"></script>
-
-        <link rel="stylesheet" href="assets/css/universalStyles.css"/>
         <link rel="stylesheet" href="assets/css/templateProduct.css"/>
     </head>
     <body class="container">
@@ -67,7 +66,7 @@
                     </div>
                     <div class="d-flex gap-3 justify-content-between">
                         <a class="button text-center col text-decoration-none text-white hb-1 ">Mua Ngay</a>
-                        <a class="button cart text-center col text-decoration-none hb-1 ">Them vao Gio hang</a>
+                        <a class="button cart text-center col text-decoration-none hb-1 ">Thêm Vào Giỏ Hàng<i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
             </section>
             <section class="row gap-5">
@@ -107,6 +106,6 @@
                 </div>
             </section>
         </main>
-        <c:import url="header.jsp"/> 
+        <c:import url="footer.jsp"></c:import> 
     </body>
 </html>
