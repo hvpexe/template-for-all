@@ -28,7 +28,7 @@
                 </div>
                 <div  class="section-right col-12 gap-2 col-md-6">
                     <h1 class="h1 col-12 mb-5">Mẫu template 1</h1>
-                    <div class="col-12 d-flex my-5 mb-4">
+<!--                    <div class="col-12 d-flex my-5 mb-4">
                         <div class="col-4 d-flex flex-column gap-10">
                             <span class="text text-bold col-12">Tác giả</span>
                             <span class="col-12">
@@ -43,7 +43,7 @@
                                 <span class="text text-bold ms-3">Account2</span>
                             </span>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="text text-description text text-bold my-5 col-12 d-flex flex-column">
                         Đây là mẫu template 1 để mọi người có thể hình dung được. Chỗ này ghi bừa vậy cho nhiều chữ thôi chứ không có gì
                     </div>

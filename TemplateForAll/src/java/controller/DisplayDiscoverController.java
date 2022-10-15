@@ -11,9 +11,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,21 +43,26 @@ public class DisplayDiscoverController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = AppConstants.DisplayDiscoverFeature.DISCOVER_PAGE;
+        // get sitemap
+        ServletContext context = getServletContext();
+        Properties siteMaps= (Properties)context.getAttribute("SITEMAPS");
+        String url =  siteMaps.getProperty(AppConstants.DisplayDiscoverFeature.DISCOVER_PAGE);
         try {
             templateDAO templateDao = new templateDAO();
             
             List<templateDTO> templateList =templateDao.loadAllTemplate();
             if (templateList != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("TEMPLATE_LIST", templateList);                        
+//                HttpSession session = request.getSession();
+                request.setAttribute("TEMPLATE_LIST", templateList);                        
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DisplayDiscoverController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(DisplayDiscoverController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-              response.sendRedirect(url);
+//              response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

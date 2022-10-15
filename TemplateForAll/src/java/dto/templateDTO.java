@@ -65,6 +65,9 @@ public class templateDTO implements Serializable{
     public String getImgLink() {
         return imgLink;
     }
+    public String getCategoryName() {
+        return categoryName;
+    }
     // setters
 
     public void setId(int id) {
@@ -91,6 +94,9 @@ public class templateDTO implements Serializable{
         this.imgLink = imgLink;
     }
     
+    public void setCategoryName (String categoryName) {
+        this.categoryName = categoryName;
+    }
     
     
 }
