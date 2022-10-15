@@ -22,11 +22,12 @@
         <c:import url="header.jsp"/> 
         <main class="main gap-5 flex-column d-flex">
             <section class="section row">
+                <c:set var="templateDto" value="${requestScope.TEMPLATE}"></c:set>
                 <div class="section-left col-12 col-md-6  d-flex align-content-center justify-content-center">
-                    <img src="assets/images/figma/Image-Placeholder.png" width="100%">
+                    <img src="${templateDto.imgLink}" width="100%">
                 </div>
                 <div  class="section-right col-12 gap-2 col-md-6">
-                    <h1 class="h1 col-12 mb-5">Mẫu template 1</h1>
+                    <h1 class="h1 col-12 mb-5">${templateDto.name}</h1>
 <!--                    <div class="col-12 d-flex my-5 mb-4">
                         <div class="col-4 d-flex flex-column gap-10">
                             <span class="text text-bold col-12">Tác giả</span>
@@ -44,42 +45,42 @@
                         </div>
                     </div>-->
                     <div class="text text-description text text-bold my-5 col-12 d-flex flex-column">
-                        Đây là mẫu template 1 để mọi người có thể hình dung được. Chỗ này ghi bừa vậy cho nhiều chữ thôi chứ không có gì
+                        ${templateDto.description}
                     </div>
                     <div class="col-12 d-flex flex-wrap my-5 " style="gap:10px">
-                        <span class="category fw-bold ">Ngắn</span>
-                        <span class="category fw-bold ">Dài</span>
-                        <span class="category fw-bold ">Ngắn nhất</span>
-                        <span class="category fw-bold ">Ngắn</span>
-                        <span class="category fw-bold ">Dài</span>
-                        <span class="category fw-bold ">Ngắn</span>
-                        <span class="category fw-bold ">Ngắn hơn</span>
-                        <span class="category fw-bold ">Ngắn nhất</span>
-                        <span class="category fw-bold ">Ngắn hơn</span>
-                        <span class="category fw-bold ">Dài</span>
-                        <span class="category fw-bold ">Ngắn hơn</span>
-                        <span class="category fw-bold ">Ngắn nhất</span>
+                        <span class="category fw-bold hb-1">Ngắn</span>
+                        <span class="category fw-bold hb-1">Dài</span>
+                        <span class="category fw-bold hb-1">Ngắn nhất</span>
+                        <span class="category fw-bold hb-1">Ngắn</span>
+                        <span class="category fw-bold hb-1">Dài</span>
+                        <span class="category fw-bold hb-1">Ngắn</span>
+                        <span class="category fw-bold hb-1">Ngắn hơn</span>
+                        <span class="category fw-bold hb-1">Ngắn nhất</span>
+                        <span class="category fw-bold hb-1">Ngắn hơn</span>
+                        <span class="category fw-bold hb-1">Dài</span>
+                        <span class="category fw-bold hb-1">Ngắn hơn</span>
+                        <span class="category fw-bold hb-1">Ngắn nhất</span>
                     </div>
                     <div class="h4 text col-12 d-flex  sale">
                         <span class="col">Giá Template</span>
-                        <span class="text text-bold h3 raleway fw-bold">10.000 Xu</span>
+                        <span class="text text-bold h3 raleway fw-bold">${templateDto.price} Xu</span>
                     </div>
                     <div class="d-flex gap-3 justify-content-between">
-                        <a class="button text-center col text-decoration-none text-white  ">Mua Ngay</a>
-                        <a class="button cart text-center col text-decoration-none  ">Thêm Vào Giỏ Hàng<i class="fa-solid fa-cart-shopping"></i></a>
+                        <a class="button text-center col text-decoration-none text-white hb-1 ">Mua Ngay</a>
+                        <!--<a class="button cart text-center col text-decoration-none hb-1 ">Them vao Gio hang</a>-->
                     </div>
             </section>
             <section class="row gap-5">
                 <div class="col-12 d-flex justify-content-between">
-                    <h1 class="h1">Một số mẫu khác của account2</h1>
-                    <div class=" button text-white px-4 py-2  my-auto">Tất Cả</div>
+                    <h1 class="h1">Một số template khác</h1>
+                    <div class="hb-1 button text-white px-4 py-2  my-auto">Tất Cả</div>
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-xs-6 ">
                         <div class="template-image card" style="background: url(https://cdn3.dhht.vn/wp-content/uploads/2022/07/11-15-phong-tap-gym-sach-se-thiet-bi-hien-dai-tai-sai-gon.jpg);">
                             <div class="template">
                                 <div class="template-title raleway">
-                                    Mẫu template
+                                    Mẫu template fix cứng
                                 </div>
                                 <div class="d-flex justify-content-between template-info-container">
                                     <div class="template-info">
@@ -106,6 +107,6 @@
                 </div>
             </section>
         </main>
-        <c:import url="footer.jsp"></c:import> 
+        <c:import url="header.jsp"/> 
     </body>
 </html>
