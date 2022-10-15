@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
 <link rel="stylesheet" href="assets/css/header.css"/>
 <header class="header">
-    <nav class="header-container nav">
+    <nav class="header-container nav justify-content-center">
         <div class="navbar-brand c-pointer d-flex align-items-center">
             <img src="assets/images/figma/logo_img.png">
             <span class="ms-2">Template For All</span>

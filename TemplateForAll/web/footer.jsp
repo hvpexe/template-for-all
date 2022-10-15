@@ -1,8 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<<link rel="stylesheet" href="assets/css/footer.css"/>
+<link rel="stylesheet" href="assets/css/footer.css"/>
 <footer class="footer col-12 row justify-content-between pt-5 my-5">
     <div class="col-4">
-        <div class="navbar-brand c-pointer d-flex align-items-center">
+        <div class="navbar-brand d-flex align-items-center">
             <img src="assets/images/figma/logo_img.png">
             <span class="ms-2">Template For All</span>
         </div>
@@ -41,4 +41,6 @@
     <div class="col-12 justify-content-between d-flex mt-5 pt-5">
         <!--<div class="inter text">@2022 Template For All. Đã đăng ký Bản quyền.</div>-->
     </div>
+    <img class="position-absolute ornament" src="assets/images/figma/Ornament_1.png">
+    <img class="position-absolute ornament" src="assets/images/figma/Ornament_2.png">
 </footer>

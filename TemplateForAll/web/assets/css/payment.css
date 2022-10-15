@@ -1,0 +1,11 @@
+
+.section h1 span {
+    color:#FF9E2C;
+}
+.section .main {
+    background: #C2E5FF;
+}
+.section .main .package{
+    background: var(--bs-white);
+    border-radius: 25px;
+}

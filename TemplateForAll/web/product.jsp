@@ -11,8 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Trang Sản Phẩm</title>
-        <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="assets/css/universalStyles.css"/>
+        <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="assets/css/animation.css"/>
         <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
         <script src="Jquery-core-3.0.2/jquery.js"></script>

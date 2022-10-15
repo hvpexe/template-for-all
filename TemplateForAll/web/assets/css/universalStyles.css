@@ -4,9 +4,11 @@
 }
 body{
     min-height: 100vh;
+    position: relative;
 }
 html{
     font-family: 'Inter',sans-serif;
+    overflow-x: hidden;
 }
 h1 {
     /* Heading/Bold/H3 */
