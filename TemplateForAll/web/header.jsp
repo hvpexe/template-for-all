@@ -15,7 +15,7 @@
             <span class="ms-2">Template For All</span>
         </div>
         <div class="nav-item header-navigation col d-flex justify-content-around mx-lg-3">
-            <a class="active" href="#">Trang chủ</a>
+            <a class="active" href="displayDiscoverPage">Trang chủ</a>
             <a href="#">Video</a>
             <a href="#">Âm Thanh</a>
             <a href="#">Hình Ảnh</a>
