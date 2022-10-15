@@ -24,14 +24,14 @@
                 <div class="section-left col-12 col-md-6  d-flex align-content-center justify-content-center">
                     <img src="assets/images/figma/Image-Placeholder.png" width="100%">
                 </div>
-                <form action="login" class="section-right col-12 col-md-6" id="main">
+                <form action="login" method="post" class="section-right col-12 col-md-6" id="main">
                     <h1 class="h1">xin chào,</h1>
                     <div class="text">Đăng nhập hoặc Đăng kí</div>
                     <div class="form-group col align-items-end pb-3 d-flex">
                         <input class="" placeholder="Tên đăng nhập (6-20 kí tự)" name="username">
                     </div>
                     <div class="form-group col align-items-start pt-3 d-flex">
-                        <input class="" placeholder="Mật khẩu" name="password">
+                        <input class="" type="password" placeholder="Mật khẩu" name="password">
                     </div>
                     <div class="col d-flex flex-column">
                         <div class="col d-flex justify-content-between text">
