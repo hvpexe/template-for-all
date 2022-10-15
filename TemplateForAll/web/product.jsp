@@ -47,32 +47,32 @@
                         Đây là mẫu template 1 để mọi người có thể hình dung được. Chỗ này ghi bừa vậy cho nhiều chữ thôi chứ không có gì
                     </div>
                     <div class="col-12 d-flex flex-wrap my-5 " style="gap:10px">
-                        <span class="category fw-bold hb-1">Ngắn</span>
-                        <span class="category fw-bold hb-1">Dài</span>
-                        <span class="category fw-bold hb-1">Ngắn nhất</span>
-                        <span class="category fw-bold hb-1">Ngắn</span>
-                        <span class="category fw-bold hb-1">Dài</span>
-                        <span class="category fw-bold hb-1">Ngắn</span>
-                        <span class="category fw-bold hb-1">Ngắn hơn</span>
-                        <span class="category fw-bold hb-1">Ngắn nhất</span>
-                        <span class="category fw-bold hb-1">Ngắn hơn</span>
-                        <span class="category fw-bold hb-1">Dài</span>
-                        <span class="category fw-bold hb-1">Ngắn hơn</span>
-                        <span class="category fw-bold hb-1">Ngắn nhất</span>
+                        <span class="category fw-bold ">Ngắn</span>
+                        <span class="category fw-bold ">Dài</span>
+                        <span class="category fw-bold ">Ngắn nhất</span>
+                        <span class="category fw-bold ">Ngắn</span>
+                        <span class="category fw-bold ">Dài</span>
+                        <span class="category fw-bold ">Ngắn</span>
+                        <span class="category fw-bold ">Ngắn hơn</span>
+                        <span class="category fw-bold ">Ngắn nhất</span>
+                        <span class="category fw-bold ">Ngắn hơn</span>
+                        <span class="category fw-bold ">Dài</span>
+                        <span class="category fw-bold ">Ngắn hơn</span>
+                        <span class="category fw-bold ">Ngắn nhất</span>
                     </div>
                     <div class="h4 text col-12 d-flex  sale">
                         <span class="col">Giá Template</span>
                         <span class="text text-bold h3 raleway fw-bold">10.000 Xu</span>
                     </div>
                     <div class="d-flex gap-3 justify-content-between">
-                        <a class="button text-center col text-decoration-none text-white hb-1 ">Mua Ngay</a>
-                        <a class="button cart text-center col text-decoration-none hb-1 ">Thêm Vào Giỏ Hàng<i class="fa-solid fa-cart-shopping"></i></a>
+                        <a class="button text-center col text-decoration-none text-white  ">Mua Ngay</a>
+                        <a class="button cart text-center col text-decoration-none  ">Thêm Vào Giỏ Hàng<i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
             </section>
             <section class="row gap-5">
                 <div class="col-12 d-flex justify-content-between">
                     <h1 class="h1">Một số mẫu khác của account2</h1>
-                    <div class="hb-1 button text-white px-4 py-2  my-auto">Tất Cả</div>
+                    <div class=" button text-white px-4 py-2  my-auto">Tất Cả</div>
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-xs-6 ">

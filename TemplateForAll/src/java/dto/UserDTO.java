@@ -11,13 +11,15 @@ import java.io.Serializable;
  *
  * @author LamVo
  */
-public class UserDTO implements Serializable{
+public class UserDTO implements Serializable {
+
     int id;
     String username;
     String password;
     String firstName;
     String lastName;
     boolean isAdmin;
+
     // constructor
     public UserDTO() {
     }
@@ -30,7 +32,7 @@ public class UserDTO implements Serializable{
         this.lastName = lastName;
         this.isAdmin = isAdmin;
     }
-    
+
     // getters
     public int getId() {
         return id;
@@ -45,7 +47,7 @@ public class UserDTO implements Serializable{
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstName == null ? username : firstName;
     }
 
     public String getLastName() {
@@ -80,5 +82,5 @@ public class UserDTO implements Serializable{
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
-    
+
 }

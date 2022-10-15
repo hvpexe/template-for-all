@@ -67,3 +67,44 @@ h1 {
 .text.h6{
     font-size: 1rem;
 }
+.button{
+    transition: 0.4s;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #FF9E2C;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+
+    text-transform: capitalize;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* Text/white */
+
+    color: #FFFFFF;
+
+}
+.button:hover{
+    background: #0072EB;
+}
+.button:active{
+    background: #FF7D00;
+        transition: 0;
+
+}
+input{
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    outline:none;
+}
+input:focus{
+    border-color: #000000;
+    transition: 0.1s;
+}
