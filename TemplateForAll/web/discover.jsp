@@ -16,47 +16,85 @@
         <div class="container">
             <c:import url="header.jsp"></c:import>
 
-            <section class="section row">
-                <div class="search">
-                    <h1 class="search-title">Khám Phá</h1>
-                    <form class="search-form">
-                        <input type="text" name="search" placeholder="Tìm kiếm template của bạn" />
-                        <button type="submit">Tìm Kiếm</button>
-                    </form>
-                </div>
+                <section class="section row">
+                    <div class="search">
+                        <h1 class="search-title">Khám Phá</h1>
+                        <form class="search-form">
+                            <input type="text" name="search" placeholder="Tìm kiếm template của bạn" />
+                            <button type="submit">Tìm Kiếm</button>
+                        </form>
+                    </div>
+                    <h1 class="template-header">Video template</h1>    
 
-                <h1 class="template-header">Video template</h1>
-                <div class="row">
-                    <div class="col-md-4 col-xs-6 ">
-                        <div class="template-image"
-                             style="background: url(https://cdn3.dhht.vn/wp-content/uploads/2022/07/11-15-phong-tap-gym-sach-se-thiet-bi-hien-dai-tai-sai-gon.jpg);">
-                            <div class="template">
-                                <div class="template-title">
-                                    Mau template
-                                </div>
-                                <div class="d-flex justify-content-between template-info-container">
-                                    <div class="template-info">
-                                        <div class="template-info-title">
-                                            giá
-                                        </div>
-                                        <div class="template-info-detail">
-                                            10000 XU
-                                        </div>
+
+                    <div class="row">
+
+                    <c:set var="templateList" value="${sessionScope.TEMPLATE_LIST}"></c:set>
+                    <c:forEach var="template" items="${templateList}">
+                        <div class="col-md-4 col-xs-6 ">
+                            <div class="template-image"
+                                 style="background: url(https://cdn3.dhht.vn/wp-content/uploads/2022/07/11-15-phong-tap-gym-sach-se-thiet-bi-hien-dai-tai-sai-gon.jpg);">
+                                <div class="template">
+                                    <div class="template-title">
+                                        ${template.name}
                                     </div>
-                                    <div class="template-info">
-                                        <div class="template-info-title">
-                                            Phân loại
+                                    <div class="d-flex justify-content-between template-info-container">
+                                        <div class="template-info">
+                                            <div class="template-info-title">
+                                                Giá
+                                            </div>
+                                            <div class="template-info-detail">
+                                                ${template.price} XU
+                                            </div>
                                         </div>
-                                        <div class="template-info-detail">
-                                            am thanh
+                                        <div class="template-info">
+                                            <div class="template-info-title">
+                                                Phân loại
+                                            </div>
+                                            <div class="template-info-detail">
+                                                ${template.categoryName}
+                                            </div>
                                         </div>
+                                        <a href="productPage" class="btn btn-detail">Chi tiết</a>
                                     </div>
-                                    <a href="#" class="btn btn-detail">Chi tiết</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </c:forEach>
                 </div>
+
+                <!--                <h1 class="template-header">Video template</h1>
+                                <div class="row">
+                                    <div class="col-md-4 col-xs-6 ">
+                                        <div class="template-image"
+                                             style="background: url(https://cdn3.dhht.vn/wp-content/uploads/2022/07/11-15-phong-tap-gym-sach-se-thiet-bi-hien-dai-tai-sai-gon.jpg);">
+                                            <div class="template">
+                                                <div class="template-title">
+                                                    Mau template
+                                                </div>
+                                                <div class="d-flex justify-content-between template-info-container">
+                                                    <div class="template-info">
+                                                        <div class="template-info-title">
+                                                            giá
+                                                        </div>
+                                                        <div class="template-info-detail">
+                                                            10000 XU
+                                                        </div>
+                                                    </div>
+                                                    <div class="template-info">
+                                                        <div class="template-info-title">
+                                                            Phân loại
+                                                        </div>
+                                                        <div class="template-info-detail">
+                                                            am thanh
+                                                        </div>
+                                                    </div>
+                                                    <a href="#" class="btn btn-detail">Chi tiết</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
             </section>
         </div>
     </body>
