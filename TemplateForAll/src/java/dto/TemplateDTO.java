@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author LamVo
  */
-public class templateDTO implements Serializable{
+public class TemplateDTO implements Serializable{
     int id;
     String name;
     int price;
@@ -19,11 +19,12 @@ public class templateDTO implements Serializable{
     int categoryId;
     String imgLink;
     String categoryName;
+    String description;
     //constructors
-    public templateDTO() {
+    public TemplateDTO() {
     }
     
-    public templateDTO(int id, String name, int price, String resourcesLink, int categoryId, String imgLink) {
+    public TemplateDTO(int id, String name, int price, String resourcesLink, int categoryId, String imgLink) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -32,12 +33,19 @@ public class templateDTO implements Serializable{
         this.imgLink = imgLink;
     }    
 
-    public templateDTO(int id, String name, int price, String imgLink, String categoryName) {
+    public TemplateDTO(int id, String name, int price, String imgLink, String categoryName) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.imgLink = imgLink;
         this.categoryName = categoryName;
+    }
+
+    public TemplateDTO(String name, int price, String imgLink, String description) {
+        this.name = name;
+        this.price = price;
+        this.imgLink = imgLink;
+        this.description = description;
     }
     
     // getters
@@ -50,7 +58,7 @@ public class templateDTO implements Serializable{
         return name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
@@ -68,6 +76,11 @@ public class templateDTO implements Serializable{
     public String getCategoryName() {
         return categoryName;
     }
+
+    public String getDescription() {
+        return description;
+    }
+    
     // setters
 
     public void setId(int id) {
@@ -96,6 +109,10 @@ public class templateDTO implements Serializable{
     
     public void setCategoryName (String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
     

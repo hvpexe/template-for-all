@@ -1,0 +1,159 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dao;
+
+import dto.TemplateDTO;
+import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import javax.naming.NamingException;
+import utils.DBConnection;
+
+/**
+ *
+ * @author LamVo
+ */
+public class TemplateDAO implements Serializable{
+//    private List<templateDTO> templateList;
+//
+//    public List<templateDTO> getTemplateList() {
+//        return templateList;
+//    }
+    
+    public List<TemplateDTO> loadAllTemplate() 
+            throws ClassNotFoundException, SQLException {
+        Connection con = null;
+        Statement stm = null;
+        ResultSet rs = null;
+        List<TemplateDTO> templateList = null;
+        try {
+            //1. make connection
+            con = DBConnection.getConnection();
+            //2. write sql string
+            String sql = "select Template.id as templateId, \n"
+                    + "	Template.name as templateName, price, imgLink, Category.name as categoryName\n"
+                    + "from Template inner join Category on Template.categoryId=Category.id";
+            //3. create statement obj           
+            stm=con.createStatement();
+            //4. execute query            
+            rs = stm.executeQuery(sql);
+            //5. process rs
+            
+            while (rs.next()) {
+                int templateId = rs.getInt("templateId");
+                String templateName = rs.getString("templateName");
+                int price = rs.getInt("price");
+                String imgLink = rs.getString("imgLink");
+                String categoryName = rs.getString("categoryName");
+                TemplateDTO templateDto = new TemplateDTO(templateId, templateName, price, imgLink, categoryName);
+                if (templateList==null) {
+                    templateList=new ArrayList<>();
+                }// end: if pd list is null
+                templateList.add(templateDto);// pd list co the = null -> khi database ko co san pham nao
+            }// end process rs
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return templateList;
+    }    
+
+    public TemplateDTO getTemplateById(int id) throws SQLException, NamingException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        TemplateDTO result =null;
+        try {
+            //1. make connection
+            con = DBConnection.getConnection();
+            //2. write sql string
+            String sql = "select Template.name as templateName, price, imgLink, description\n"
+                    + "from Template inner join Category on Template.categoryId=Category.id\n"
+                    + "where Template.id = ?";
+            //3. create statement obj           
+            stm=con.prepareStatement(sql);
+            stm.setInt(1, id);
+            //4. execute query            
+            rs = stm.executeQuery();
+            //5. process rs            
+            if (rs.next()) {
+                String name = rs.getString("templateName");
+                int price = rs.getInt("price");
+                String link = rs.getString("imgLink");
+                String description = rs.getString("description");
+                result = new TemplateDTO(name, price, link,description);
+            }// end process rs
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+    
+    public List<TemplateDTO> load3Template() 
+            throws ClassNotFoundException, SQLException {
+        Connection con = null;
+        Statement stm = null;
+        ResultSet rs = null;
+        List<TemplateDTO> templateList = null;
+        try {
+            //1. make connection
+            con = DBConnection.getConnection();
+            //2. write sql string
+            String sql = "select Template.id as templateId, \n"
+                    + "	Template.name as templateName, price, imgLink, Category.name as categoryName\n"
+                    + "from Template inner join Category on Template.categoryId=Category.id";
+            //3. create statement obj           
+            stm=con.createStatement();
+            //4. execute query            
+            rs = stm.executeQuery(sql);
+            //5. process rs
+            
+            while (rs.next()) {
+                int templateId = rs.getInt("templateId");
+                String templateName = rs.getString("templateName");
+                int price = rs.getInt("price");
+                String imgLink = rs.getString("imgLink");
+                String categoryName = rs.getString("categoryName");
+                TemplateDTO templateDto = new TemplateDTO(templateId, templateName, price, imgLink, categoryName);
+                if (templateList==null) {
+                    templateList=new ArrayList<>();
+                }// end: if pd list is null
+                templateList.add(templateDto);// pd list co the = null -> khi database ko co san pham nao
+            }// end process rs
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return templateList;
+    }    
+}
