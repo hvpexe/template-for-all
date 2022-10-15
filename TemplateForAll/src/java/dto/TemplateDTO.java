@@ -57,7 +57,7 @@ public class TemplateDTO implements Serializable{
         return name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 

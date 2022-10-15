@@ -55,7 +55,7 @@
                                                 ${template.categoryName}
                                             </div>
                                         </div>
-                                        <a href="productPage" class="btn btn-detail">Chi tiết</a>
+                                        <a href="displayTemplateDetail?templateId=${template.id}" class="btn btn-detail">Chi tiết</a>
                                     </div>
                                 </div>
                             </div>
