@@ -49,7 +49,7 @@ public class DisplayTemplateDetail extends HttpServlet {
         String url =  siteMaps.getProperty(AppConstants.DisplayTemplateDetailFeature.TEMPLATE_PAGE);
         try {
             TemplateDAO templateDao = new TemplateDAO();
-            TemplateDTO result = templateDao.getTemplateById(templateId);
+            TemplateDTO result = templateDao.getTemplateById(templateId);            
             if (result != null) {
                 request.setAttribute("TEMPLATE", result);
             }
