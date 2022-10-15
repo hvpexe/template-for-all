@@ -1,0 +1,141 @@
+body {
+    background: linear-gradient(176.84deg, #BFE4FF 0%, #FFFFFF 87.67%);
+}
+
+section {
+    width: 100%;
+}
+
+.search {
+    /* position: relative; */
+    padding: 40px 0 0;
+    margin: 0 auto;
+}
+
+.search-title {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 64px;
+    /* identical to box height, or 133% */
+
+    text-transform: capitalize;
+    text-align: center;
+    color: #1D2B4F;
+}
+
+.search-form {
+    position: relative;
+    width: 650px;
+    height: 62px;
+    border: 1px solid #E6E6E6;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 8px;
+    background: #FFFFFF;
+}
+
+
+
+.search input {
+    float: left;
+    border: none;
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 470px;
+}
+
+.search input:focus-visible {
+    outline: none;
+}
+
+.search button {
+    float: right;
+    height: 50px;
+    padding: 5px 40px;
+    margin-top: 5px;
+    margin-right: 5px;
+    border: none;
+    /* Color/Orange */
+
+    background: #FF9E2C;
+    border-radius: 8px;
+    color: white;
+}
+
+.template-header {
+    margin-top: 110px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 64px;
+    /* identical to box height, or 133% */
+
+    text-transform: capitalize;
+
+    /* Text/Tittle */
+
+    color: #1D2B4F;
+}
+
+.template-image {
+    margin-top: 25px;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 8/11;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+.template {
+    margin: 5px;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    border-radius: inherit;
+    background: #FFFFFF;
+    backdrop-filter: blur(24.1579px);
+    color: #1D2B4F;
+    font-family: 'Raleway';
+    font-style: normal;
+    text-transform: capitalize;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+.template-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    margin: 18px 18px 0;
+}
+
+.template-info-container {
+    margin: 18px 18px;
+}
+
+.template-info-title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.template-info-detail {
+    margin-top: 8px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.btn-detail {
+    background-color: #FF9E2C;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 16px;
+    padding-top: 12px;
+}
