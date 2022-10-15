@@ -26,7 +26,7 @@
                 </div>
                 <form action="login" method="post" class="section-right col-12 col-md-6" id="main">
                     <h1 class="h1">xin chào,</h1>
-                    <div class="text">Đăng nhập hoặc Đăng kí</div>
+                    <div class="text-bold">Đăng nhập hoặc Đăng kí</div>
                     <div class="form-group col align-items-end pb-3 d-flex">
                         <input class="" placeholder="Tên đăng nhập (6-20 kí tự)" name="username">
                     </div>
@@ -34,14 +34,14 @@
                         <input class="" type="password" placeholder="Mật khẩu" name="password">
                     </div>
                     <div class="col d-flex flex-column">
-                        <div class="col d-flex justify-content-between text">
+                        <div class="col d-flex justify-content-between text-bold">
                             <span>Quên mật khẩu?</span>
                             <span>Chưa có tài khoản? <a href="#" onclick="changeRegister('#main')">Đăng kí</a></span>
                         </div>
                         <button class="hb-1" type="submit">Tiếp tục</button>
                     </div>
                     <div class="col row justify-content-center align-items-end  pt-3">
-                        <span class="text col-12 text-center">Hoặc đăng nhập bằng</span>
+                        <span class="text-bold col-12 text-center">Hoặc đăng nhập bằng</span>
                         <div class="google d-flex align-items-center justify-content-center hb-2" >
                             <img class="img-thumbnail border-0" src="assets/images/figma/Google-alt.png"/>
                             <span>Google</span>

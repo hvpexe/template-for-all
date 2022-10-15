@@ -9,7 +9,7 @@
     <nav class="header-container nav">
         <div class="navbar-brand c-pointer d-flex align-items-center">
             <img src="assets/images/figma/logo_img.png">
-            <span class="">Template For All</span>
+            <span class="ms-2">Template For All</span>
         </div>
         <div class="nav-item header-navigation col d-flex justify-content-around">
             <a class="active" href="#">Trang chủ</a>
