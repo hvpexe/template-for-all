@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Video</title>
+        <title>Video Template</title>
         <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="assets/css/discover.css">
     </head>
@@ -29,11 +29,11 @@
 
                     <div class="row">
 
-                    <c:set var="templateList" value="${sessionScope.TEMPLATE_LIST}"></c:set>
+                    <c:set var="templateList" value="${requestScope.TEMPLATE_LIST}"></c:set>
                     <c:forEach var="template" items="${templateList}">
                         <div class="col-md-4 col-xs-6 ">
                             <div class="template-image"
-                                 style="background: url(https://cdn3.dhht.vn/wp-content/uploads/2022/07/11-15-phong-tap-gym-sach-se-thiet-bi-hien-dai-tai-sai-gon.jpg);">
+                                 style="background: url(${template.imgLink});">
                                 <div class="template">
                                     <div class="template-title">
                                         ${template.name}
