@@ -1,7 +1,6 @@
 *:before,*:after{
     content:'';
     position: absolute;
-
 }
 body{
     min-height: 100vh;
@@ -24,6 +23,12 @@ h1 {
     /* Text/Tittle */
 
     color: #1D2B4F;
+}
+.raleway{
+    font-family: 'Raleway',sans-serif !important;
+}
+.inter{
+    font-family: 'Inter',sans-serif !important;
 }
 .text{
     font-family: 'Inter', sans-serif;

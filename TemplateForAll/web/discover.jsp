@@ -40,7 +40,7 @@
                                             giá
                                         </div>
                                         <div class="template-info-detail">
-                                            1000 XU
+                                            10000 XU
                                         </div>
                                     </div>
                                     <div class="template-info">

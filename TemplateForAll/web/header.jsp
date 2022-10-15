@@ -11,7 +11,7 @@
             <img src="assets/images/figma/logo_img.png">
             <span class="ms-2">Template For All</span>
         </div>
-        <div class="nav-item header-navigation col d-flex justify-content-around">
+        <div class="nav-item header-navigation col d-flex justify-content-around mx-lg-3">
             <a class="active" href="#">Trang chủ</a>
             <a href="#">Video</a>
             <a href="#">Âm Thanh</a>
