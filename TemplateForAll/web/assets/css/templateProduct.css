@@ -68,7 +68,7 @@
     aspect-ratio: 8/11;
     object-fit: cover;
     border-radius: 24px;
-        background-position: center;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -122,4 +122,27 @@
     font-weight: 700;
     font-size: 16px;
     padding-top: 12px;
+}
+#confirm-box {
+    inset:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    transition: 0.3s;
+    scale:0 0;
+    transform-origin: 70% bottom;
+}
+#confirm-box .gray-box{
+    position: absolute;
+    inset:0;
+    z-index: 0;
+    background: #bbbbbb50;
+}
+#confirm-box .container{
+    inset:0;
+    position: relative;
+    z-index: 2;
+    margin:auto;
+    background: white;
 }

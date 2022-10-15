@@ -23,11 +23,14 @@
     </div>
     <div class="col-2">
         <div class="navbar-brand">Cộng đồng</div>
-        <a class="list-group-item c-pointer border-0 text fs-6">API</a>
-        <a class="list-group-item c-pointer border-0 text fs-6">Thảo luận</a>
-        <a class="list-group-item c-pointer border-0 text fs-6">Góp ý</a>
-        <a class="list-group-item c-pointer border-0 text fs-6">Blog</a>
-        <a class="list-group-item c-pointer border-0 text fs-6">Trung tâm trợ giúp</a>
+        <div class=" list-group">
+            <a class="list-group-item c-pointer border-0 text fs-6">API</a>
+            <a class="list-group-item c-pointer border-0 text fs-6">Thảo luận</a>
+            <a class="list-group-item c-pointer border-0 text fs-6">Góp ý</a>
+            <a class="list-group-item c-pointer border-0 text fs-6">Blog</a>
+            <a class="list-group-item c-pointer border-0 text fs-6">Trung tâm trợ giúp</a>
+        </div >
+
     </div>
     <div class="col-2">
         <div class="navbar-brand">Theo dõi</div>

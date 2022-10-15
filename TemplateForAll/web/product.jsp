@@ -24,27 +24,27 @@
         <main class="main gap-5 flex-column d-flex">
             <section class="section row">
                 <c:set var="templateDto" value="${requestScope.TEMPLATE}"></c:set>
-                <div class="section-left col-12 col-md-6  d-flex align-content-center justify-content-center">
-                    <img src="${templateDto.imgLink}" width="100%">
+                    <div class="section-left col-12 col-md-6  d-flex align-content-center justify-content-center">
+                        <img src="${templateDto.imgLink}" width="100%">
                 </div>
                 <div  class="section-right col-12 gap-2 col-md-6">
                     <h1 class="h1 col-12 mb-5">${templateDto.name}</h1>
-<!--                    <div class="col-12 d-flex my-5 mb-4">
-                        <div class="col-4 d-flex flex-column gap-10">
-                            <span class="text text-bold col-12">Tác giả</span>
-                            <span class="col-12">
-                                <img src="assets/images/figma/user1.png" class="img-fluid rounded-circle" width="20%">
-                                <span class="text text-bold ms-3">Account1</span>
-                            </span>
-                        </div>
-                        <div class="col-4 d-flex flex-column gap-10">
-                            <span class="text text-bold col-12">Sở hữu</span>
-                            <span class="col-12">
-                                <img src="assets/images/figma/user2.png" class="img-fluid rounded-circle" width="20%">
-                                <span class="text text-bold ms-3">Account2</span>
-                            </span>
-                        </div>
-                    </div>-->
+                    <!--                    <div class="col-12 d-flex my-5 mb-4">
+                                            <div class="col-4 d-flex flex-column gap-10">
+                                                <span class="text text-bold col-12">Tác giả</span>
+                                                <span class="col-12">
+                                                    <img src="assets/images/figma/user1.png" class="img-fluid rounded-circle" width="20%">
+                                                    <span class="text text-bold ms-3">Account1</span>
+                                                </span>
+                                            </div>
+                                            <div class="col-4 d-flex flex-column gap-10">
+                                                <span class="text text-bold col-12">Sở hữu</span>
+                                                <span class="col-12">
+                                                    <img src="assets/images/figma/user2.png" class="img-fluid rounded-circle" width="20%">
+                                                    <span class="text text-bold ms-3">Account2</span>
+                                                </span>
+                                            </div>
+                                        </div>-->
                     <div class="text text-description text text-bold my-5 col-12 d-flex flex-column">
                         ${templateDto.description}
                     </div>
@@ -66,8 +66,9 @@
                         <span class="col">Giá Template</span>
                         <span class="text text-bold h3 raleway fw-bold">${templateDto.price} Xu</span>
                     </div>
+
                     <div class="d-flex gap-3 justify-content-between">
-                        <a class="button text-center col text-decoration-none text-white hb-1 ">Mua Ngay</a>
+                        <a class="button text-center col text-decoration-none text-white hb-1 " onclick="Buy('#confirm-box')">Mua Ngay</a>
                         <!--<a class="button cart text-center col text-decoration-none hb-1 ">Them vao Gio hang</a>-->
                     </div>
             </section>
@@ -108,6 +109,19 @@
                 </div>
             </section>
         </main>
+        <div class="position-fixed" id="confirm-box" >
+            <div class="gray-box"></div>
+            <div class="container border rounded col col-md-4 p-3 rounded">
+                <div class="col border rounded py-4 text-center">
+                    <div class="text p-4 fw-bold raleway">Bạn có muốn mua template này không?</div>
+                    <div class="col p-4 d-flex gap-5 justify-content-evenly">
+                        <button class="button col-3 py-2 yes hb-1 p-3">CÓ</button> 
+                        <button class="button bg-secondary no hb-1 col-3 py-2 p-3">Không</button> 
+                    </div>
+                </div>
+            </div>
+        </div>           
         <c:import url="footer.jsp"/> 
+        <script src="assets/js/product.js"></script>
     </body>
 </html>

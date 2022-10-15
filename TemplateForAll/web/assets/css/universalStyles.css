@@ -68,7 +68,7 @@ h1 {
     font-size: 1rem;
 }
 .button{
-    transition: 0.4s;
+    transition: 0.1s;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -95,7 +95,7 @@ h1 {
 }
 .button:active{
     background: #FF7D00;
-        transition: 0;
+    transition: 0;
 
 }
 input{
