@@ -27,4 +27,8 @@ public class AppConstants {
         public static final String SEARCH_PAGE = "searchPage";
     }
     
+    public class DisplayTemplateDetailFeature {
+        public static final String TEMPLATE_PAGE = "productPage";
+    }
+    
 }

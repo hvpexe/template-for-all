@@ -46,22 +46,22 @@ public class DisplayTemplateDetail extends HttpServlet {
         // get sitemap
         ServletContext context = getServletContext();
         Properties siteMaps= (Properties)context.getAttribute("SITEMAPS");
-//        String url =  siteMaps.getProperty(AppConstants.DisplayTemplateDetailFeature.TEMPLATE_PAGE);
+        String url =  siteMaps.getProperty(AppConstants.DisplayTemplateDetailFeature.TEMPLATE_PAGE);
         try {
-//            TemplateDAO templateDao = new TemplateDAO();
-//            TemplateDTO result = templateDao.getTemplateById(templateId);
-//            if (result != null) {
-//                request.setAttribute("TEMPLATE", result);
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (NamingException ex) {
-//            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
+            TemplateDAO templateDao = new TemplateDAO();
+            TemplateDTO result = templateDao.getTemplateById(templateId);
+            if (result != null) {
+                request.setAttribute("TEMPLATE", result);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-//            RequestDispatcher rd = request.getRequestDispatcher(url);
-//            rd.forward(request, response);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 
