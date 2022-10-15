@@ -56,7 +56,6 @@ public class searchController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(DisplayDiscoverController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-//              response.sendRedirect(url);
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }

@@ -21,7 +21,7 @@
     </head>
     <body>
         <div class="container">
-            <c:import url="header.jsp"></c:import>
+            <c:import url="header.jsp"/>
             <section class="section row m-a">
                 <div class="section-left col-12 col-md-6 d-none d-md-flex align-content-center justify-content-center">
                     <img src="assets/images/figma/Image-Placeholder.png" width="100%">
@@ -30,7 +30,7 @@
 
                 <!--Login Form-->
                 <div class="section-right col-12 col-md-6 " id="form_section">
-                    <form action="loginController" class="d-flex  flex-column"  method="post">
+                    <form action="loginController" class="d-flex flex-column"  method="post">
                         <h1 class="h1">xin chào,
                             <div class="text text-bold fs-5 fw-normal">Đăng nhập hoặc Đăng kí</div>
                         </h1>
@@ -45,13 +45,14 @@
 
                         </div>
                         <div class="col d-flex flex-column gap-3 mt-3">
+                            <span class="d-block m-auto fs-4 raleway text-danger text-capitalize">${sessionScope.LOGIN_FAILED}</span> 
                             <button class="button" type="submit">Tiếp tục</button>
                             <div class="col my-3 d-flex justify-content-between text text-bold">
                                 <span>Quên mật khẩu?</span>
                                 <span>Chưa có tài khoản? <a href="#" class="text-decoration-none" onclick="changeForm()">Đăng kí</a></span>
                             </div>
                         </div>
-                        
+
                     </form>
                     <form class="d-flex flex-column d-none gap-3" action="registerController" method="post">
                         <h1 class="h1">Đăng kí
@@ -74,6 +75,7 @@
 
                         </div>
                         <div class="col d-flex flex-column">
+                            <span class="d-block m-auto fs-4 raleway text-danger text-capitalize">${sessionScope.REGISTER_FAILED}</span> 
                             <button class="button" type="submit">Tiếp tục</button>
                             <div class="col d-flex justify-content-between my-5 text text-center text-bold">
                                 <span class="d-block m-auto">Đã có tài khoản? 
@@ -87,4 +89,12 @@
         </div>
     </body>
     <script src="assets/js/login.js"></script>
+    <script>
+        <c:if test="${REGISTER_FAILED != null}">
+                                        changeForm();
+                                        console.log('REGISTER_FAILED');
+        </c:if>
+    </script>
+    <c:remove var="REGISTER_FAILED" scope="session"/>
+    <c:remove var="LOGIN_FAILED" scope="session"/>
 </html>

@@ -38,6 +38,8 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+
         // get all parameters
         String username = request.getParameter("txtUsername");
         String password = request.getParameter("txtPassword");
@@ -48,11 +50,10 @@ public class LoginController extends HttpServlet {
             UserDAO userDao = new UserDAO();
             UserDTO userDto = userDao.checkLogin(username, password);
             if (userDto != null) {
-                HttpSession session = request.getSession();
                 session.setAttribute("USER", userDto);
                 url = AppConstants.LoginFeatures.DISCOVER_PAGE;
             } else {
-                System.out.println("user not found");
+                session.setAttribute("LOGIN_FAILED", "username or password is incorrect!"); 
             }
             
         } catch (SQLException ex) {

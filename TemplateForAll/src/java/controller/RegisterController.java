@@ -57,11 +57,11 @@ public class RegisterController extends HttpServlet {
             if (!txtPassword.equals(txtRepassword))
             {
                 session.setAttribute("REGISTER_FAILED", "Password Not The Same!");
-            }
-            if (UserDAO.getUserByUserName(txtUsername) == null)
+                check = false;
+            } else if (UserDAO.getUserByUserName(txtUsername) != null)
             {
-                System.out.println("Register Failed!");
-                session.setAttribute("REGISTER_FAILED", "Email Exist!");
+                session.setAttribute("REGISTER_FAILED", "Username Exist!");
+                check = false;
             }
             if (check)
             {
@@ -72,7 +72,8 @@ public class RegisterController extends HttpServlet {
                     System.out.println("Register Success!");
                     session.setAttribute("USER", userDto);
                     url = AppConstants.LoginFeatures.DISCOVER_PAGE;
-                }else{
+                } else
+                {
                     System.out.println("System Failed!");
                 }
             }
