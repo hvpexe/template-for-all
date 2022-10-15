@@ -21,7 +21,7 @@ public class DBConnection implements Serializable {
         //1. load driver
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         //2. make connection string
-        String con_url = "jdbc:sqlserver://localhost:1433;database=TemplateForAllDB;instanceName=SQLEXPRESS";
+        String con_url = "jdbc:sqlserver://localhost:1433;database=TemplateForAll;instanceName=SQLEXPRESS";
         //3. open connection
         con = DriverManager.getConnection(con_url, "sa", "12345");
         //4. return conenction
