@@ -1,4 +1,4 @@
 USE [master]
-alter database [TemplateForAllDB] set Single_user with rollback IMMEDIATE;
-drop database [TemplateForAllDB]
+alter database TemplateForAll set Single_user with rollback IMMEDIATE;
+drop database TemplateForAll
 go

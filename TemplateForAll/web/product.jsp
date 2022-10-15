@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="./assets/images/figma/logo_img.png" type="image/x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Trang Sản Phẩm</title>
         <link rel="stylesheet" href="assets/css/universalStyles.css"/>
@@ -107,6 +108,6 @@
                 </div>
             </section>
         </main>
-        <c:import url="header.jsp"/> 
+        <c:import url="footer.jsp"/> 
     </body>
 </html>

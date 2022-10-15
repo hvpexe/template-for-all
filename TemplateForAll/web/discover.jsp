@@ -4,6 +4,7 @@
 <html lang="en">
 
     <head>
+        <link rel="icon" href="./assets/images/figma/logo_img.png" type="image/x-icon">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,13 +22,13 @@
                         <h1 class="search-title">Khám Phá</h1>
                         <form class="search-form" action="searchController">
                             <input type="text" name="search" placeholder="Tìm kiếm template của bạn" value="${requestScope.search}"/>
-                            <button type="submit">Tìm Kiếm</button>
-                        </form>
-                    </div>
-                    <h1 class="template-header">Video template</h1>    
+                        <button type="submit">Tìm Kiếm</button>
+                    </form>
+                </div>
+                <h1 class="template-header">Video template</h1>    
 
 
-                    <div class="row">
+                <div class="row">
 
                     <c:set var="templateList" value="${requestScope.TEMPLATE_LIST}"></c:set>
                     <c:forEach var="template" items="${templateList}">
@@ -95,6 +96,7 @@
                                         </div>
                                     </div>
                                 </div>-->
+                <c:import url="footer.jsp"/>
             </section>
         </div>
     </body>
