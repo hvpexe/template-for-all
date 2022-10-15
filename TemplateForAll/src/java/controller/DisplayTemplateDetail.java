@@ -9,10 +9,10 @@ import dao.TemplateDAO;
 import dto.TemplateDTO;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -26,8 +26,8 @@ import utils.AppConstants;
  *
  * @author LamVo
  */
-@WebServlet(name = "DisplayDiscoverController", urlPatterns = {"/DisplayDiscoverController"})
-public class DisplayDiscoverController extends HttpServlet {
+@WebServlet(name = "DisplayTemplateDetail", urlPatterns = {"/DisplayTemplateDetail"})
+public class DisplayTemplateDetail extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,26 +41,27 @@ public class DisplayDiscoverController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        //get parameter
+        int templateId = Integer.parseInt(request.getParameter("templateId"));
         // get sitemap
         ServletContext context = getServletContext();
         Properties siteMaps= (Properties)context.getAttribute("SITEMAPS");
-        String url =  siteMaps.getProperty(AppConstants.DisplayDiscoverFeature.DISCOVER_PAGE);
+//        String url =  siteMaps.getProperty(AppConstants.DisplayTemplateDetailFeature.TEMPLATE_PAGE);
         try {
-            TemplateDAO templateDao = new TemplateDAO();
-            
-            List<TemplateDTO> templateList =templateDao.loadAllTemplate();
-            if (templateList != null) {
-//                HttpSession session = request.getSession();
-                request.setAttribute("TEMPLATE_LIST", templateList);                        
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DisplayDiscoverController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(DisplayDiscoverController.class.getName()).log(Level.SEVERE, null, ex);
+//            TemplateDAO templateDao = new TemplateDAO();
+//            TemplateDTO result = templateDao.getTemplateById(templateId);
+//            if (result != null) {
+//                request.setAttribute("TEMPLATE", result);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (NamingException ex) {
+//            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-//              response.sendRedirect(url);
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+//            RequestDispatcher rd = request.getRequestDispatcher(url);
+//            rd.forward(request, response);
         }
     }
 
