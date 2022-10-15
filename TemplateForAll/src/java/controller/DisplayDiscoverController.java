@@ -5,18 +5,31 @@
  */
 package controller;
 
+import dao.templateDAO;
+import dto.templateDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import utils.AppConstants;
 
 /**
  *
  * @author LamVo
  */
-public class Maincontroller extends HttpServlet {
+@WebServlet(name = "DisplayDiscoverController", urlPatterns = {"/DisplayDiscoverController"})
+public class DisplayDiscoverController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,17 +43,26 @@ public class Maincontroller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Maincontroller</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Maincontroller at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        // get sitemap
+        ServletContext context = getServletContext();
+        Properties siteMaps= (Properties)context.getAttribute("SITEMAPS");
+        String url =  siteMaps.getProperty(AppConstants.DisplayDiscoverFeature.DISCOVER_PAGE);
+        try {
+            templateDAO templateDao = new templateDAO();
+            
+            List<templateDTO> templateList =templateDao.loadAllTemplate();
+            if (templateList != null) {
+//                HttpSession session = request.getSession();
+                request.setAttribute("TEMPLATE_LIST", templateList);                        
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DisplayDiscoverController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DisplayDiscoverController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+//              response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

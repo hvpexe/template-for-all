@@ -8,7 +8,6 @@ package controller;
 import dao.UserDAO;
 import dto.UserDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +50,7 @@ public class LoginController extends HttpServlet {
             if (userDto != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("USER", userDto);
-                url = AppConstants.LoginFeatures.HOME_PAGE;
+                url = AppConstants.LoginFeatures.DISCOVER_PAGE;
             } else {
                 System.out.println("user not found");
             }
