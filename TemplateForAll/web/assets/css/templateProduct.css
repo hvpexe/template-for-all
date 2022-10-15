@@ -68,6 +68,9 @@
     aspect-ratio: 8/11;
     object-fit: cover;
     border-radius: 24px;
+        background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .template {
