@@ -33,7 +33,10 @@
             <div class="header-user position-relative" >
                 <div class="user-navigation d-none position-absolute">
                     <div class="list-group row py-2  bg-transparent">
-                        <div class="list-group-item px-1 border-top border-bottom gold">Gói Nâng Cao</div>
+                        <div class="list-group-item px-1 border-top border-bottom gold">
+                            <a href="payment.jsp" class="text-decoration-none" style="color: inherit">Gói Nâng Cao
+                            </a>
+                        </div>
                         <div class="list-group-item px-1 shopping">Giỏ hàng của tôi</div>
                         <div class="list-group-item px-1 border-bottom history">Lịch sử giao dịch</div>
                         <div class="list-group-item px-1 border-0 logout">Đăng Xuất</div>

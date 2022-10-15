@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Gói Tải Xuống Nâng Cao</title>
+        <title>Nạp tiền vào tài khoản</title>
         <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="assets/css/universalStyles.css"/>
         <link rel="stylesheet" href="assets/css/animation.css"/>
@@ -25,20 +25,26 @@
         </div>
         <section class="section col-12">
             <div class="col-12 my-5">
-                <h1 class="h1 text-center ">Gói Tải Xuống <span class="text-uppercase">NÂNG CAO</span></h1>
-                <div class="text-center">Cung cấp cho bạn định mức phù hợp với nhu cầu của mình.</div>
+                <h1 class="h1 text-center ">Nạp tiền vào <span class="text-uppercase">tài khoản</span></h1>
+                <div class="text-center">Định mức phù hợp với nhu cầu của mình.</div>
             </div>
             <div class="main col-12 p-4 d-flex justify-content-center">
                 <div class="container row p-0">
-                    <div class="col-12 inter fs-4">Số dư của bạn: <span class="fw-bold">10.000 xu</span></div>
+                    <div class="col-12 inter fs-4 mb-4">Số dư của bạn: <span class="fw-bold">10.000 xu</span></div>
                     <div class=" col-12 p-0 d-flex justify-content-around">
-                        <div class="package p-4 col-3 d-flex flex-column">
-                            <span class="text col-12 text-center fs-4 fw-bold ">Cơ bản</span>
-                            <img class="w-75 m-auto my-5" src="assets/images/figma/Standard.png"/>
-                            <span class="text inter fw-bold fs-2 text-center">100.000đ</span>
+                        <div class="package p-4 col-6 d-flex flex-column">
+                            <span class="text col-12 text-center fs-4 fw-bold ">Chuyển khoản qua Momo</span>
+                            <span class="text pt-2">1. Quét mã QR bên dưới</span>
+                            <span class="text">2. Nhập số tiền bạn muốn nạp - tối thiểu 10.000 vnđ</span>
+                            <span class="text col-12 text-center fs-4 fw-bold ">1000 vnđ = 1000 xu</span>
+
+                            <span class="text">3. Hoàn tất quá trình chuyển tiền</span>
+                            <span class="text">Sau khoảng 1, 2 phút, tài khoản bạn trên web sẽ được cộng tiền.</span>
+                            <img class="w-100 m-auto my-1" src="assets/images/figma/momo.jpg"/>
                         </div>
-                        <div class="package col-3"></div>
-                        <div class="package col-3"></div>
+                    </div>
+                    <div>
+
                     </div>
                 </div>
             </div>
