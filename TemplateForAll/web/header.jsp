@@ -40,7 +40,10 @@
                         </div>
                         <div class="list-group-item px-1 shopping">Giỏ hàng của tôi</div>
                         <div class="list-group-item px-1 border-bottom history">Lịch sử giao dịch</div>
-                        <div class="list-group-item px-1 border-0 logout">Đăng Xuất</div>
+                        <div class="list-group-item px-1 border-0 logout">
+                            <a href="LogoutController" class="text-decoration-none" style="color: inherit">
+                                Đăng Xuất
+                            </a></div>
                     </div>
                 </div>
                 <div class="user-display p-2 px-3 d-flex align-items-center  gap-2" onclick="document.querySelector('.user-navigation').classList.toggle('d-none');">
