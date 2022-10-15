@@ -18,7 +18,7 @@ import utils.DBConnection;
  * @author LamVo
  */
 public class UserDAO implements Serializable{
-    public static UserDTO checkLogin(String username, String password)
+    public UserDTO checkLogin(String username, String password)
             throws SQLException, ClassNotFoundException {
         Connection connection = null;
         PreparedStatement stm = null;
@@ -59,12 +59,5 @@ public class UserDAO implements Serializable{
         }
         return result;
     }
-    
-    public static void main(String[] args) {
-        try {
-                    System.out.println(checkLogin("lamlam", "123"));
-
-        } catch (Exception e) {
-        }
-    }
+        
 }

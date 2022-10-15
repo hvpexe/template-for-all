@@ -5,13 +5,15 @@
  */
 package controller;
 
-import dao.UserDAO;
-import dto.UserDTO;
+import dao.templateDAO;
+import dto.templateDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +26,8 @@ import utils.AppConstants;
  *
  * @author LamVo
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "DisplayDiscoverController", urlPatterns = {"/DisplayDiscoverController"})
+public class DisplayDiscoverController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,29 +41,21 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        // get all parameters
-        String username = request.getParameter("txtUsername");
-        String password = request.getParameter("txtPassword");
-        // initialize url
-        String url = AppConstants.LoginFeatures.INVALID_PAGE;
-        try {            
-            // call dao
-            UserDAO userDao = new UserDAO();
-            UserDTO userDto = userDao.checkLogin(username, password);
-            if (userDto != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("USER", userDto);
-                url = AppConstants.LoginFeatures.DISCOVER_PAGE;
-            } else {
-                System.out.println("user not found");
-            }
+        String url = AppConstants.DisplayDiscoverFeature.DISCOVER_PAGE;
+        try {
+            templateDAO templateDao = new templateDAO();
             
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            List<templateDTO> templateList =templateDao.loadAllTemplate();
+            if (templateList != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("TEMPLATE_LIST", templateList);                        
+            }
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DisplayDiscoverController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DisplayDiscoverController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            response.sendRedirect(url);
+              response.sendRedirect(url);
         }
     }
 
