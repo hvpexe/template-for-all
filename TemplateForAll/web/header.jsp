@@ -31,7 +31,7 @@
         </c:if>
         <c:if test="${USER!=null}">
             <div class="header-user position-relative" >
-                <div class="user-navigation position-absolute">
+                <div class="user-navigation d-none position-absolute">
                     <div class="list-group row py-2  bg-transparent">
                         <div class="list-group-item px-1 border-top border-bottom gold">Gói Nâng Cao</div>
                         <div class="list-group-item px-1 shopping">Giỏ hàng của tôi</div>
