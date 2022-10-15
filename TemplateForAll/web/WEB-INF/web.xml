@@ -16,6 +16,14 @@
         <description>ServletContextListener</description>
         <listener-class>listener.ServletListener</listener-class>
     </listener>
+    <servlet>
+        <servlet-name>searchController</servlet-name>
+        <servlet-class>controller.searchController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>searchController</servlet-name>
+        <url-pattern>/searchController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

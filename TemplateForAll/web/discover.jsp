@@ -19,8 +19,8 @@
                 <section class="section row">
                     <div class="search">
                         <h1 class="search-title">Khám Phá</h1>
-                        <form class="search-form">
-                            <input type="text" name="search" placeholder="Tìm kiếm template của bạn" />
+                        <form class="search-form" action="searchController">
+                            <input type="text" name="search" placeholder="Tìm kiếm template của bạn" value="${requestScope.search}"/>
                             <button type="submit">Tìm Kiếm</button>
                         </form>
                     </div>

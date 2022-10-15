@@ -23,4 +23,8 @@ public class AppConstants {
         
     }
     
+    public class SearchFeatures {
+        public static final String SEARCH_PAGE = "searchPage";
+    }
+    
 }

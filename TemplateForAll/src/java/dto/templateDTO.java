@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author LamVo
  */
-public class templateDTO implements Serializable{
+public class TemplateDTO implements Serializable{
     int id;
     String name;
     int price;
@@ -20,10 +20,10 @@ public class templateDTO implements Serializable{
     String imgLink;
     String categoryName;
     //constructors
-    public templateDTO() {
+    public TemplateDTO() {
     }
     
-    public templateDTO(int id, String name, int price, String resourcesLink, int categoryId, String imgLink) {
+    public TemplateDTO(int id, String name, int price, String resourcesLink, int categoryId, String imgLink) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -32,7 +32,7 @@ public class templateDTO implements Serializable{
         this.imgLink = imgLink;
     }    
 
-    public templateDTO(int id, String name, int price, String imgLink, String categoryName) {
+    public TemplateDTO(int id, String name, int price, String imgLink, String categoryName) {
         this.id = id;
         this.name = name;
         this.price = price;
