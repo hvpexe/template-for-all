@@ -73,7 +73,7 @@
 
                     <div class="d-flex gap-3 justify-content-between">
                         <c:if test="${templateDto.isPay}">
-                            <a href="${templateDto.resourcesLink}" class="button text-center col text-decoration-none text-white hb-1">Tải về</a>
+                            <a id="btn-download" href="${templateDto.resourcesLink}" class="button text-center col text-decoration-none text-white hb-1">Tải về</a>
                         </c:if>
                         <c:if test="${!templateDto.isPay}">
                             <a class="button text-center col text-decoration-none text-white hb-1 " onclick="Buy('#confirm-box')">Mua Ngay</a>

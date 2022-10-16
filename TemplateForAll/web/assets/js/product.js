@@ -16,6 +16,9 @@ $("#confirm-box .yes").click(function (e) {
         success: function (data) {
             console.log(data);
             $('#confirm-box .container > div').html(data);
+            setTimeout(() => {
+                window.location.href = window.location.href
+            }, 2000);
         },
         error: function (error) {
             $('#confirm-box .container > div').html("Ajax Error!");
