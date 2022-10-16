@@ -88,7 +88,7 @@ public class UserDAO implements Serializable {
                         + "      ,[lastName]\n"
                         + "      ,[isAdmin]\n"
                         + "      ,[coin]\n"
-                        + "  FROM [TemplateForAllDB].[dbo].[User]"
+                        + "  FROM [User]"
                         + "  WHERE username = ? ";
                 //3. create statement obj
                 stm = connection.prepareStatement(sql); // tao ra obj rong
