@@ -1,0 +1,45 @@
+.footer .navbar-brand {
+    position: relative;
+
+    /* Heading/Bold/H5 */
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    /* identical to box height, or 133% */
+
+    text-transform: capitalize;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* Text/Tittle */
+
+    color: #1D2B4F;
+
+}
+.footer .ornament{
+    width: 500px;
+    z-index: -1;
+}
+.footer .ornament:first-of-type{
+    position: absolute;
+    background: rgba(204, 233, 255, 0.6);
+    filter: blur(98px);
+    left: 0%;
+    bottom: -5%;
+}
+.footer .list-group .list-group-item{
+    background: transparent;
+}
+.footer .ornament:last-of-type{
+    position: absolute;
+    width: 500px;
+    
+
+    /* Ornament/Ornament Blue */
+    background: rgba(204, 233, 255, 0.6);
+    filter: blur(98px);
+    transform: rotate(168.67deg);
+    right: -5%;
+    bottom: 0%;
+}

@@ -1,0 +1,110 @@
+*:before,*:after{
+    content:'';
+    position: absolute;
+}
+body{
+    min-height: 100vh;
+    position: relative;
+}
+html{
+    font-family: 'Inter',sans-serif;
+    overflow-x: hidden;
+}
+h1 {
+    /* Heading/Bold/H3 */
+
+    font-family: 'Raleway',sans-serif;
+    font-style: normal;
+    font-weight: 700!important;
+    font-size: 48px!important;
+    line-height: 64px!important;
+    /* identical to box height, or 133% */
+
+    text-transform: capitalize;
+
+    /* Text/Tittle */
+
+    color: #1D2B4F;
+}
+.raleway{
+    font-family: 'Raleway',sans-serif !important;
+}
+.inter{
+    font-family: 'Inter',sans-serif !important;
+}
+.text{
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.8);
+}
+.text.text-bold{
+    font-weight: 600;
+    line-height: 30px;
+}
+.text.text-description{
+    font-style: normal;
+    font-weight: 400;
+    /* Text/Body */
+
+    color: #798196;
+}
+.text.h1{
+    font-size: 2.25rem;
+}
+.text.h2{
+    font-size: 2rem;
+}
+.text.h3{
+    font-size: 1.75rem;
+}
+.text.h4{
+    font-size: 1.5rem;
+}
+.text.h5{
+    font-size: 1.25rem;
+}
+.text.h6{
+    font-size: 1rem;
+}
+.button{
+    transition: 0.1s;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #FF9E2C;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+
+    text-transform: capitalize;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* Text/white */
+
+    color: #FFFFFF;
+
+}
+.button:hover{
+    background: #0072EB;
+}
+.button:active{
+    background: #FF7D00;
+    transition: 0;
+
+}
+input{
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    outline:none;
+}
+input:focus{
+    border-color: #000000;
+    transition: 0.1s;
+}

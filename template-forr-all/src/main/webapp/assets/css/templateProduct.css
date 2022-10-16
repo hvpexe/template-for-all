@@ -1,0 +1,148 @@
+.section .category{
+    font-family: 'DM Sans',sans-serif;
+
+    /* Auto layout */
+    display: flex;
+    padding: 8px;
+    gap: 10px;
+
+    /* Ornament/Light Blue */
+    background: #F3F5F8;
+    border-radius: 4px;
+
+    /* Color/Blue */
+    color: #189BEE;
+
+    /* Body/Body 2 Semibold */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+}
+.main .button{
+    /* Color/Orange */
+    font-style: normal;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    background: #FF9E2C;
+    border-radius: 8px;
+}
+.section .button{
+    padding: 16px 40px;
+    font-size: 20px;
+}
+.section .button.cart{
+    border: 1px solid #FF9E2C;
+    border-radius: 8px;
+    background: transparent;
+
+    /* Color/Orange */
+    color: #FF9E2C;
+}
+.section .button.cart i{
+    position: relative;
+    top: -8px;
+    left:2px;
+}
+.template-header {
+    margin-top: 110px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 64px;
+    /* identical to box height, or 133% */
+
+    text-transform: capitalize;
+
+    /* Text/Tittle */
+
+    color: #1D2B4F;
+}
+
+.template-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 8/11;
+    object-fit: cover;
+    border-radius: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.template {
+    margin: 5px;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    border-radius: inherit;
+    background: #FFFFFF;
+    backdrop-filter: blur(24.1579px);
+    color: #1D2B4F;
+    font-family: 'Raleway';
+    font-style: normal;
+    text-transform: capitalize;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+.template-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    margin: 18px 18px 0;
+}
+
+.template-info-container {
+    margin: 18px 18px;
+}
+
+.template-info-title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.template-info-detail {
+    margin-top: 8px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.btn-detail {
+    background-color: #FF9E2C;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 16px;
+    padding-top: 12px;
+}
+#confirm-box {
+    inset:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    transition: 0.3s;
+    scale:0 0;
+    transform-origin: 70% bottom;
+}
+#confirm-box .gray-box{
+    position: absolute;
+    inset:0;
+    z-index: 0;
+    background: #bbbbbb50;
+}
+#confirm-box .container{
+    inset:0;
+    position: relative;
+    z-index: 2;
+    margin:auto;
+    background: white;
+}
