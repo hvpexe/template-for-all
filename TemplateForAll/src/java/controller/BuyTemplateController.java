@@ -1,21 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package controller;
 
 import dao.TemplateDAO;
-import dto.TemplateDTO;
 import dto.UserDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,13 +23,13 @@ import utils.AppConstants;
 
 /**
  *
- * @author LamVo
+ * @author Admin
  */
-@WebServlet(name = "DisplayTemplateDetail", urlPatterns
-        = {
-            "/DisplayTemplateDetail"
-        })
-public class DisplayTemplateDetail extends HttpServlet {
+@WebServlet(name = "BuyTemplateController", urlPatterns =
+{
+    "/BuyTemplate"
+})
+public class BuyTemplateController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,37 +44,51 @@ public class DisplayTemplateDetail extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         //get parameter
-        int templateId = Integer.parseInt(request.getParameter("templateId"));
+        System.out.println(request.getParameter("templateid"));
+        System.out.println(request.getParameter("price"));
+        int templateId = Integer.parseInt(request.getParameter("templateid"));
+        
         // get sitemap
         ServletContext context = getServletContext();
         Properties siteMaps = (Properties) context.getAttribute("SITEMAPS");
-        String url = siteMaps.getProperty(AppConstants.DisplayTemplateDetailFeature.TEMPLATE_PAGE);
         //get session
         HttpSession session = request.getSession();
-        try {
-            TemplateDAO templateDao = new TemplateDAO();
+        //get Writer
+        PrintWriter out = response.getWriter();
+
+        String result = AppConstants.BuyTemplateControllerFeature.FAILED;
+        try
+        {
+            int templateid = Integer.parseInt(request.getParameter("templateid"));
             UserDTO user = (UserDTO) session.getAttribute("USER");
-            int userid = user.getId();
-            TemplateDTO template = templateDao.getTemplateById(templateId, userid);
-            
-            if (template != null) {
-                //get Buying date
-                if (user != null)
-                {
-                    Timestamp orderDate = templateDao.getOrderDate(user.getId(), templateId);
-                    request.setAttribute("ORDER_DATE", orderDate);
-                }
-                request.setAttribute("TEMPLATE", template);
+            int price = Integer.parseInt(request.getParameter("price"));
+            System.out.println(user);
+            if (user.getCoin() - price < 0)
+            {
+                result += AppConstants.BuyTemplateControllerFeature.FAILED_INSUFFICIENT_MONEY;
+                return;
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            if (user == null)
+            {
+                return;
+            }
+            if (TemplateDAO.buyAndCreateOrderDate(user.getId(), templateId, price))
+            {
+                user.setCoin(user.getCoin()-price);
+                session.setAttribute("USER", user);
+                result = AppConstants.BuyTemplateControllerFeature.SUCCESS;
+            }
+
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(BuyTemplateController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex)
+        {
+            Logger.getLogger(BuyTemplateController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally
+        {
+            System.out.println(result);
+            out.print(result);
         }
     }
 

@@ -41,9 +41,9 @@
             <img src="assets/images/figma/Twitter.png" class="w-25">
         </div>
     </div>
-    <div class="col-12 justify-content-between d-flex mt-5 pt-5">
-        <!--<div class="inter text">@2022 Template For All. Đã đăng ký Bản quyền.</div>-->
-    </div>
+        <div class="col-12 justify-content-between d-flex mt-5 pt-5">
+            <div class="inter text fs-6">@2022 Template For All. Đã đăng ký Bản quyền.</div>
+        </div>
     <img class="position-absolute ornament" src="assets/images/figma/Ornament_1.png">
     <img class="position-absolute ornament" src="assets/images/figma/Ornament_2.png">
 </footer>

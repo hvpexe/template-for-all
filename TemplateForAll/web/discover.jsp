@@ -34,7 +34,7 @@
                     <c:forEach var="template" items="${templateList}">
                         <div class="col-md-4 col-xs-6 ">
                             <div class="template-image"
-                                 style="background: url(${template.imgLink});">
+                                 style="background-image: url(${template.imgLink});">
                                 <div class="template">
                                     <div class="template-title">
                                         ${template.name}

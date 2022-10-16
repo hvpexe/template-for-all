@@ -24,6 +24,10 @@
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>controller.LogoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuyTemplateController</servlet-name>
+        <servlet-class>controller.BuyTemplateController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>searchController</servlet-name>
         <url-pattern>/searchController</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/LogoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuyTemplateController</servlet-name>
+        <url-pattern>/BuyTemplate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

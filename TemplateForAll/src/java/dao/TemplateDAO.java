@@ -23,19 +23,20 @@ import utils.DBConnection;
  * @author LamVo
  */
 public class TemplateDAO implements Serializable {
+
 //    private List<templateDTO> templateList;
 //
 //    public List<templateDTO> getTemplateList() {
 //        return templateList;
 //    }
-
     public List<TemplateDTO> loadAllTemplate()
             throws ClassNotFoundException, SQLException {
         Connection con = null;
         Statement stm = null;
         ResultSet rs = null;
         List<TemplateDTO> templateList = null;
-        try {
+        try
+        {
             //1. make connection
             con = DBConnection.getConnection();
             //2. write sql string
@@ -48,26 +49,32 @@ public class TemplateDAO implements Serializable {
             rs = stm.executeQuery(sql);
             //5. process rs
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int templateId = rs.getInt("templateId");
                 String templateName = rs.getString("templateName");
                 int price = rs.getInt("price");
                 String imgLink = rs.getString("imgLink");
                 String categoryName = rs.getString("categoryName");
                 TemplateDTO templateDto = new TemplateDTO(templateId, templateName, price, imgLink, categoryName);
-                if (templateList == null) {
+                if (templateList == null)
+                {
                     templateList = new ArrayList<>();
                 }// end: if pd list is null
                 templateList.add(templateDto);// pd list co the = null -> khi database ko co san pham nao
             }// end process rs
-        } finally {
-            if (rs != null) {
+        } finally
+        {
+            if (rs != null)
+            {
                 rs.close();
             }
-            if (stm != null) {
+            if (stm != null)
+            {
                 stm.close();
             }
-            if (con != null) {
+            if (con != null)
+            {
                 con.close();
             }
         }
@@ -80,7 +87,8 @@ public class TemplateDAO implements Serializable {
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<TemplateDTO> templateList = null;
-        try {
+        try
+        {
             //1. make connection
             con = DBConnection.getConnection();
             //2. write sql string
@@ -95,26 +103,32 @@ public class TemplateDAO implements Serializable {
             rs = ps.executeQuery();
             //5. process rs
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int templateId = rs.getInt("templateId");
                 String templateName = rs.getString("templateName");
                 int price = rs.getInt("price");
                 String imgLink = rs.getString("imgLink");
                 String categoryName = rs.getString("categoryName");
                 TemplateDTO templateDto = new TemplateDTO(templateId, templateName, price, imgLink, categoryName);
-                if (templateList == null) {
+                if (templateList == null)
+                {
                     templateList = new ArrayList<>();
                 }// end: if pd list is null
                 templateList.add(templateDto);// pd list co the = null -> khi database ko co san pham nao
             }// end process rs
-        } finally {
-            if (rs != null) {
+        } finally
+        {
+            if (rs != null)
+            {
                 rs.close();
             }
-            if (ps != null) {
+            if (ps != null)
+            {
                 ps.close();
             }
-            if (con != null) {
+            if (con != null)
+            {
                 con.close();
             }
         }
@@ -126,7 +140,8 @@ public class TemplateDAO implements Serializable {
         PreparedStatement stm = null;
         ResultSet rs = null;
         TemplateDTO result = null;
-        try {
+        try
+        {
             //1. make connection
             con = DBConnection.getConnection();
             //2. write sql string
@@ -142,7 +157,8 @@ public class TemplateDAO implements Serializable {
             //4. execute query            
             rs = stm.executeQuery();
             //5. process rs            
-            if (rs.next()) {
+            if (rs.next())
+            {
                 String name = rs.getString("templateName");
                 int price = rs.getInt("price");
                 String resourcesLink = rs.getString("link");
@@ -150,19 +166,24 @@ public class TemplateDAO implements Serializable {
                 String description = rs.getString("description");
                 System.out.println(rs.getInt("userid"));
                 boolean isPay = false;
-                if (rs.getInt("userid") != 0) {
+                if (rs.getInt("userid") != 0)
+                {
                     isPay = true;
                 }
                 result = new TemplateDTO(name, price, resourcesLink, link, description, isPay);
             }// end process rs
-        } finally {
-            if (rs != null) {
+        } finally
+        {
+            if (rs != null)
+            {
                 rs.close();
             }
-            if (stm != null) {
+            if (stm != null)
+            {
                 stm.close();
             }
-            if (con != null) {
+            if (con != null)
+            {
                 con.close();
             }
         }
@@ -175,7 +196,8 @@ public class TemplateDAO implements Serializable {
         Statement stm = null;
         ResultSet rs = null;
         List<TemplateDTO> templateList = null;
-        try {
+        try
+        {
             //1. make connection
             con = DBConnection.getConnection();
             //2. write sql string
@@ -188,26 +210,32 @@ public class TemplateDAO implements Serializable {
             rs = stm.executeQuery(sql);
             //5. process rs
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int templateId = rs.getInt("templateId");
                 String templateName = rs.getString("templateName");
                 int price = rs.getInt("price");
                 String imgLink = rs.getString("imgLink");
                 String categoryName = rs.getString("categoryName");
                 TemplateDTO templateDto = new TemplateDTO(templateId, templateName, price, imgLink, categoryName);
-                if (templateList == null) {
+                if (templateList == null)
+                {
                     templateList = new ArrayList<>();
                 }// end: if pd list is null
                 templateList.add(templateDto);// pd list co the = null -> khi database ko co san pham nao
             }// end process rs
-        } finally {
-            if (rs != null) {
+        } finally
+        {
+            if (rs != null)
+            {
                 rs.close();
             }
-            if (stm != null) {
+            if (stm != null)
+            {
                 stm.close();
             }
-            if (con != null) {
+            if (con != null)
+            {
                 con.close();
             }
         }
@@ -219,7 +247,8 @@ public class TemplateDAO implements Serializable {
         PreparedStatement stm = null;
         ResultSet rs = null;
         Timestamp orderDate = null;
-        try {
+        try
+        {
             //1. make connection
             con = DBConnection.getConnection();
             //2. write sql string
@@ -236,30 +265,36 @@ public class TemplateDAO implements Serializable {
             rs = stm.executeQuery();
             //5. process rs
 
-            if (rs.next() == true) {
+            if (rs.next() == true)
+            {
                 orderDate = rs.getTimestamp(1);
             }// end process rs
-        } finally {
-            if (rs != null) {
+        } finally
+        {
+            if (rs != null)
+            {
                 rs.close();
             }
-            if (stm != null) {
+            if (stm != null)
+            {
                 stm.close();
             }
-            if (con != null) {
+            if (con != null)
+            {
                 con.close();
             }
         }
         return orderDate;
     }
 
-   public List<TemplateDTO> loadMyTemplate(int userId)
+    public List<TemplateDTO> loadMyTemplate(int userId)
             throws ClassNotFoundException, SQLException {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<TemplateDTO> templateList = null;
-        try {
+        try
+        {
             //1. make connection
             con = DBConnection.getConnection();
             //2. write sql string
@@ -275,29 +310,93 @@ public class TemplateDAO implements Serializable {
             rs = ps.executeQuery();
             //5. process rs
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int templateId = rs.getInt("templateId");
                 String templateName = rs.getString("templateName");
                 int price = rs.getInt("price");
                 String imgLink = rs.getString("imgLink");
                 String categoryName = rs.getString("categoryName");
                 TemplateDTO templateDto = new TemplateDTO(templateId, templateName, price, imgLink, categoryName);
-                if (templateList == null) {
+                if (templateList == null)
+                {
                     templateList = new ArrayList<>();
                 }// end: if pd list is null
                 templateList.add(templateDto);// pd list co the = null -> khi database ko co san pham nao
             }// end process rs
-        } finally {
-            if (rs != null){
+        } finally
+        {
+            if (rs != null)
+            {
                 rs.close();
             }
-            if (ps != null){
+            if (ps != null)
+            {
                 ps.close();
             }
-            if (con != null){
+            if (con != null)
+            {
                 con.close();
             }
         }
         return templateList;
+    }
+
+    public static boolean buyAndCreateOrderDate(int userid, int templateId, int price) throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = null;
+        boolean result = false;
+        try
+        {
+            //1. make connection set autocommit = false
+            con = DBConnection.getConnection();
+            con.setAutoCommit(false);
+
+            //2. write sql string
+            sql = "INSERT INTO [dbo].[OrderDetail]\n"
+                    + "           ([userId]\n"
+                    + "           ,[templateId]\n"
+                    + "           ,[orderDate])\n"
+                    + "     VALUES\n"
+                    + "           (?,?,?)";
+            //3. create statement obj           
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, userid);
+            ps.setInt(2, templateId);
+            ps.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+            //4. execute query            
+            ps.executeUpdate();
+            //5. write sql string
+            sql = "UPDATE [dbo].[User]\n"
+                    + "   SET \n"
+                    + "      [coin] = coin - ?\n"
+                    + " WHERE id = ?";
+            //6. create statement obj           
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, price);
+            ps.setInt(2, userid);
+            //7. execute query            
+            ps.executeUpdate();
+            //8. commit
+            con.commit();
+            result = true;
+        } finally
+        {
+            if (rs != null)
+            {
+                rs.close();
+            }
+            if (ps != null)
+            {
+                ps.close();
+            }
+            if (con != null)
+            {
+                con.close();
+            }
+        }
+        return result;
     }
 }

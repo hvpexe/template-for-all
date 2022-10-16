@@ -51,7 +51,7 @@
                 <div class="user-display p-2 px-3 d-flex align-items-center  gap-2" onclick="document.querySelector('.user-navigation').classList.toggle('d-none');">
                     <div class="user-avt  d-flex align-items-center justify-content-center far fa-user"></div>
                     <span class="text-capitalize fs-5 mx-auto ">${USER.firstName}</span>
-                    <span class="d-flex align-items-center justify-content-center fs-5"><i class="fa-solid fa-chevron-down"></i></span>
+                    <span class="d-flex align-items-center justify-content-center fs-5"><i class="fa-solid fa-chevron-down" style="width: 20px;height: 20px;"></i></span>
                 </div>
             </div>
         </c:if>
