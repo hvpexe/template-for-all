@@ -38,7 +38,9 @@
                             <a href="payment.jsp" class="text-decoration-none" style="color: inherit">Gói Nâng Cao
                             </a>
                         </div>
-                        <div class="list-group-item px-1 shopping">Giỏ hàng của tôi</div>
+                        <div class="list-group-item px-1 shopping">
+                            <a href="displayMyLibraryPage" class="text-decoration-none" style="color: inherit">Thư viện của tôi
+                            </a></div>
                         <div class="list-group-item px-1 border-bottom history">Lịch sử giao dịch</div>
                         <div class="list-group-item px-1 border-0 logout">
                             <a href="LogoutController" class="text-decoration-none" style="color: inherit">

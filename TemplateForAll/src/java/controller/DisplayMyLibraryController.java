@@ -9,12 +9,12 @@ import dao.TemplateDAO;
 import dto.TemplateDTO;
 import dto.UserDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -29,11 +29,8 @@ import utils.AppConstants;
  *
  * @author LamVo
  */
-@WebServlet(name = "DisplayTemplateDetail", urlPatterns
-        = {
-            "/DisplayTemplateDetail"
-        })
-public class DisplayTemplateDetail extends HttpServlet {
+@WebServlet(name = "DisplayMyLibraryController", urlPatterns = {"/DisplayMyLibraryController"})
+public class DisplayMyLibraryController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,33 +44,24 @@ public class DisplayTemplateDetail extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //get parameter
-        int templateId = Integer.parseInt(request.getParameter("templateId"));
         // get sitemap
         ServletContext context = getServletContext();
         Properties siteMaps = (Properties) context.getAttribute("SITEMAPS");
-        String url = siteMaps.getProperty(AppConstants.DisplayTemplateDetailFeature.TEMPLATE_PAGE);
-        //get session
-        HttpSession session = request.getSession();
+        String url = siteMaps.getProperty(AppConstants.DisplayMyLibraryFeature.LIBRARY_PAGE);
         try {
-            TemplateDAO templateDao = new TemplateDAO();
-            UserDTO user = (UserDTO) session.getAttribute("USER");
-            int userid = user.getId();
-            TemplateDTO template = templateDao.getTemplateById(templateId, userid);
-            
-            if (template != null) {
-                //get Buying date
-                Timestamp orderDate = templateDao.getOrderDate(user.getId(), templateId);
-
-                request.setAttribute("ORDER_DATE", orderDate);
-                request.setAttribute("TEMPLATE", template);
+            HttpSession session = request.getSession();
+            UserDTO userDto = (UserDTO)session.getAttribute("USER");
+            if (userDto != null) {
+                TemplateDAO templateDao = new TemplateDAO();
+                List<TemplateDTO> templateLibList = templateDao.loadMyTemplate(userDto.getId());
+                if (templateLibList != null) {
+                    request.setAttribute("TEMPLATE_LIB", templateLibList);
+                }
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DisplayMyLibraryController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DisplayMyLibraryController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

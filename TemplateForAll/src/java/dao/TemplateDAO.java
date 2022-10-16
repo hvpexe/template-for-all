@@ -15,8 +15,6 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.naming.NamingException;
 import utils.DBConnection;
 
@@ -255,4 +253,51 @@ public class TemplateDAO implements Serializable {
         return orderDate;
     }
 
+   public List<TemplateDTO> loadMyTemplate(int userId)
+            throws ClassNotFoundException, SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<TemplateDTO> templateList = null;
+        try {
+            //1. make connection
+            con = DBConnection.getConnection();
+            //2. write sql string
+            String sql = "select Template.id as templateId, \n"
+                    + "		Template.name as templateName, price, imgLink, Category.name as categoryName \n"
+                    + "		from Template inner join Category on Template.categoryId=Category.id\n"
+                    + "			  left join OrderDetail on Template.id=OrderDetail.templateId\n"
+                    + "where OrderDetail.userId = ?;";
+            //3. create statement obj           
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, userId);
+            //4. execute query            
+            rs = ps.executeQuery();
+            //5. process rs
+
+            while (rs.next()) {
+                int templateId = rs.getInt("templateId");
+                String templateName = rs.getString("templateName");
+                int price = rs.getInt("price");
+                String imgLink = rs.getString("imgLink");
+                String categoryName = rs.getString("categoryName");
+                TemplateDTO templateDto = new TemplateDTO(templateId, templateName, price, imgLink, categoryName);
+                if (templateList == null) {
+                    templateList = new ArrayList<>();
+                }// end: if pd list is null
+                templateList.add(templateDto);// pd list co the = null -> khi database ko co san pham nao
+            }// end process rs
+        } finally {
+            if (rs != null){
+                rs.close();
+            }
+            if (ps != null){
+                ps.close();
+            }
+            if (con != null){
+                con.close();
+            }
+        }
+        return templateList;
+    }
 }
