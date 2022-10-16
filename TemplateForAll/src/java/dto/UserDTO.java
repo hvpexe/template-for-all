@@ -19,10 +19,13 @@ public class UserDTO implements Serializable {
     String firstName;
     String lastName;
     boolean isAdmin;
+    int coin;
 
     // constructor
     public UserDTO() {
     }
+
+   
 
     public UserDTO(int id, String username, String password, String firstName, String lastName, boolean isAdmin) {
         this.id = id;
@@ -57,7 +60,11 @@ public class UserDTO implements Serializable {
     public boolean isIsAdmin() {
         return isAdmin;
     }
+    public int getCoin() {
+        return coin;
+    }
     // setters
+
 
     public void setId(int id) {
         this.id = id;
@@ -81,6 +88,10 @@ public class UserDTO implements Serializable {
 
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
+    }
+
+    public void setCoin(int coin) {
+        this.coin = coin;
     }
 
 }
