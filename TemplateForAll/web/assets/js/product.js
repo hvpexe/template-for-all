@@ -11,14 +11,14 @@ $("#confirm-box .yes").click(function (e) {
         url: 'BuyTemplate',
         data: {
             price: templatePrice,
-            templateid: templateId,
+            templateId: templateId,
         },
         success: function (data) {
             console.log(data);
             $('#confirm-box .container > div').html(data);
         },
         error: function (error) {
-            $('#confirm-box .container > div').html(error);
+            $('#confirm-box .container > div').html("Ajax Error!");
         }
     });
 });

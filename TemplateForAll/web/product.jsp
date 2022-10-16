@@ -19,6 +19,10 @@
         <script src="Jquery-core-3.0.2/jquery.js"></script>
         <link rel="stylesheet" href="assets/css/templateProduct.css"/>
     </head>
+    <script>
+        let templatePrice = ${requestScope.TEMPLATE.price};
+        let templateId = ${param.templateId};
+    </script>
     <body class="container">
         <c:import url="header.jsp"/> 
         <main class="main gap-5 flex-column d-flex">

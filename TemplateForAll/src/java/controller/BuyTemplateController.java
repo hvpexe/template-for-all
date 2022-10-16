@@ -25,10 +25,10 @@ import utils.AppConstants;
  *
  * @author Admin
  */
-@WebServlet(name = "BuyTemplateController", urlPatterns =
-{
-    "/BuyTemplate"
-})
+@WebServlet(name = "BuyTemplateController", urlPatterns
+        = {
+            "/BuyTemplate"
+        })
 public class BuyTemplateController extends HttpServlet {
 
     /**
@@ -43,50 +43,42 @@ public class BuyTemplateController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        //get session
+        HttpSession session = request.getSession();
         //get parameter
-        System.out.println(request.getParameter("templateid"));
+        System.out.println(request.getParameter("templateId"));
         System.out.println(request.getParameter("price"));
-        int templateId = Integer.parseInt(request.getParameter("templateid"));
-        
+        int templateId = Integer.parseInt(request.getParameter("templateId"));
+        UserDTO user = (UserDTO) session.getAttribute("USER");
+        int price = Integer.parseInt(request.getParameter("price"));
         // get sitemap
         ServletContext context = getServletContext();
         Properties siteMaps = (Properties) context.getAttribute("SITEMAPS");
-        //get session
-        HttpSession session = request.getSession();
         //get Writer
         PrintWriter out = response.getWriter();
 
         String result = AppConstants.BuyTemplateControllerFeature.FAILED;
-        try
-        {
-            int templateid = Integer.parseInt(request.getParameter("templateid"));
-            UserDTO user = (UserDTO) session.getAttribute("USER");
-            int price = Integer.parseInt(request.getParameter("price"));
+        try {
+
             System.out.println(user);
-            if (user.getCoin() - price < 0)
-            {
+            if (user.getCoin() - price < 0) {
                 result += AppConstants.BuyTemplateControllerFeature.FAILED_INSUFFICIENT_MONEY;
                 return;
             }
-            if (user == null)
-            {
+            if (user == null) {
                 return;
             }
-            if (TemplateDAO.buyAndCreateOrderDate(user.getId(), templateId, price))
-            {
-                user.setCoin(user.getCoin()-price);
+            if (TemplateDAO.buyAndCreateOrderDate(user.getId(), templateId, price)) {
+                user.setCoin(user.getCoin() - price);
                 session.setAttribute("USER", user);
                 result = AppConstants.BuyTemplateControllerFeature.SUCCESS;
             }
 
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             Logger.getLogger(BuyTemplateController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex)
-        {
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(BuyTemplateController.class.getName()).log(Level.SEVERE, null, ex);
-        } finally
-        {
+        } finally {
             System.out.println(result);
             out.print(result);
         }
