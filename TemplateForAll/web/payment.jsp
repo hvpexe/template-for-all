@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@page import="dto.UserDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,7 +33,7 @@
             </div>
             <div class="main col-12 p-4 d-flex justify-content-center">
                 <div class="container row p-0">
-                    <div class="col-12 inter fs-4 mb-4">Số dư của bạn: <span class="fw-bold">10.000 xu</span></div>
+                    <div class="col-12 inter fs-4 mb-4">Số dư của bạn: <span class="fw-bold"><%= 10000 %> xu</span></div>
                     <div class="container col-12 p-0 d-flex justify-content-around">
                         <div class="package p-3 col-4 mx-4 d-flex flex-column">
                             <span class="text col-12 text-center fs-4 fw-bold ">Cơ bản</span>
