@@ -29,10 +29,10 @@ import utils.AppConstants;
  *
  * @author LamVo
  */
-@WebServlet(name = "DisplayTemplateDetail", urlPatterns =
-{
-    "/DisplayTemplateDetail"
-})
+@WebServlet(name = "DisplayTemplateDetail", urlPatterns
+        = {
+            "/DisplayTemplateDetail"
+        })
 public class DisplayTemplateDetail extends HttpServlet {
 
     /**
@@ -55,32 +55,26 @@ public class DisplayTemplateDetail extends HttpServlet {
         String url = siteMaps.getProperty(AppConstants.DisplayTemplateDetailFeature.TEMPLATE_PAGE);
         //get session
         HttpSession session = request.getSession();
-        try
-        {
+        try {
             TemplateDAO templateDao = new TemplateDAO();
-            TemplateDTO template = templateDao.getTemplateById(templateId);
             UserDTO user = (UserDTO) session.getAttribute("USER");
-
-            template = templateDao.getTemplateById(templateId);
-            if (template != null)
-            {
+            int userid = user.getId();
+            TemplateDTO template = templateDao.getTemplateById(templateId, userid);
+            
+            if (template != null) {
                 //get Buying date
                 Timestamp orderDate = templateDao.getOrderDate(user.getId(), templateId);
 
                 request.setAttribute("ORDER_DATE", orderDate);
                 request.setAttribute("TEMPLATE", template);
             }
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex)
-        {
+        } catch (NamingException ex) {
             Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex)
-        {
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(DisplayTemplateDetail.class.getName()).log(Level.SEVERE, null, ex);
-        } finally
-        {
+        } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }

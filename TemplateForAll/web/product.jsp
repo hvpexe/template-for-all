@@ -68,7 +68,13 @@
                     </div>
 
                     <div class="d-flex gap-3 justify-content-between">
-                        <a class="button text-center col text-decoration-none text-white hb-1 " onclick="Buy('#confirm-box')">Mua Ngay</a>
+                        <c:if test="${templateDto.isPay}">
+                            <a href="${templateDto.resourcesLink}" class="button text-center col text-decoration-none text-white hb-1">Tải về</a>
+                        </c:if>
+                        <c:if test="${!templateDto.isPay}">
+                            <a class="button text-center col text-decoration-none text-white hb-1 " onclick="Buy('#confirm-box')">Mua Ngay</a>
+                        </c:if>
+                        
                         <!--<a class="button cart text-center col text-decoration-none hb-1 ">Them vao Gio hang</a>-->
                     </div>
             </section>

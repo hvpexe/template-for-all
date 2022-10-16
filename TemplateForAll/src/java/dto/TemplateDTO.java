@@ -11,7 +11,8 @@ import java.io.Serializable;
  *
  * @author LamVo
  */
-public class TemplateDTO implements Serializable{
+public class TemplateDTO implements Serializable {
+
     int id;
     String name;
     int price;
@@ -20,10 +21,12 @@ public class TemplateDTO implements Serializable{
     String imgLink;
     String categoryName;
     String description;
+    boolean isPay;
+
     //constructors
     public TemplateDTO() {
     }
-    
+
     public TemplateDTO(int id, String name, int price, String resourcesLink, int categoryId, String imgLink) {
         this.id = id;
         this.name = name;
@@ -31,7 +34,7 @@ public class TemplateDTO implements Serializable{
         this.resourcesLink = resourcesLink;
         this.categoryId = categoryId;
         this.imgLink = imgLink;
-    }    
+    }
 
     public TemplateDTO(int id, String name, int price, String imgLink, String categoryName) {
         this.id = id;
@@ -40,14 +43,31 @@ public class TemplateDTO implements Serializable{
         this.imgLink = imgLink;
         this.categoryName = categoryName;
     }
+
     public TemplateDTO(String name, int price, String imgLink, String description) {
         this.name = name;
         this.price = price;
         this.imgLink = imgLink;
         this.description = description;
     }
-    
+
+    public TemplateDTO(String name, int price, String resourcesLink, String imgLink, String description, boolean isPay) {
+        this.name = name;
+        this.price = price;
+        this.imgLink = imgLink;
+        this.resourcesLink = resourcesLink;
+        this.description = description;
+        this.isPay = isPay;
+    }
+
+    public boolean isIsPay() {
+        return isPay;
+    }
+
     // getters
+    public void setIsPay(boolean isPay) {
+        this.isPay = isPay;
+    }
 
     public int getId() {
         return id;
@@ -72,10 +92,11 @@ public class TemplateDTO implements Serializable{
     public String getImgLink() {
         return imgLink;
     }
+
     public String getCategoryName() {
         return categoryName;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -104,13 +125,13 @@ public class TemplateDTO implements Serializable{
     public void setImgLink(String imgLink) {
         this.imgLink = imgLink;
     }
-    
-    public void setCategoryName (String categoryName) {
+
+    public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-    
+
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
 }
