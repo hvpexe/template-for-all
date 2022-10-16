@@ -25,17 +25,17 @@ public class UserDTO implements Serializable {
     public UserDTO() {
     }
 
-   
-
-    public UserDTO(int id, String username, String password, String firstName, String lastName, boolean isAdmin) {
+    public UserDTO(int id, String username, String password, String firstName, String lastName, boolean isAdmin, int coin) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.isAdmin = isAdmin;
+        this.coin = coin;
     }
 
+  
     // getters
     public int getId() {
         return id;

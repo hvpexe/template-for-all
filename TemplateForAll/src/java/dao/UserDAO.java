@@ -32,7 +32,7 @@ public class UserDAO implements Serializable {
             if (connection != null)
             {
                 //2. create sql string
-                String sql = "select U.id, U.username, U.firstName, U.isAdmin\n"
+                String sql = "select U.id, U.username, U.firstName, U.isAdmin, U.coin\n"
                         + "from [User] U\n"
                         + "where U.username = ? AND U.password = ?";
                 //3. create statement obj
@@ -47,7 +47,8 @@ public class UserDAO implements Serializable {
                     int id = rs.getInt("id");
                     String firstName = rs.getString("firstName");
                     boolean role = rs.getBoolean("isAdmin");
-                    result = new UserDTO(id, username, null, firstName, null, role);
+                    int coin = rs.getInt("coin");
+                    result = new UserDTO(id, username, null, firstName, null, role, coin);
                 }
             }
         } finally
@@ -100,7 +101,8 @@ public class UserDAO implements Serializable {
                     int id = rs.getInt("id");
                     String firstName = rs.getString("firstName");
                     boolean role = rs.getBoolean("isAdmin");
-                    result = new UserDTO(id, username, null, firstName, null, role);
+                    int coin = rs.getInt("coin");
+                    result = new UserDTO(id, username, null, firstName, null, role, coin);
                 }
             }
         } finally
