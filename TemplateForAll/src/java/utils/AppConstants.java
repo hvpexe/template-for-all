@@ -31,4 +31,7 @@ public class AppConstants {
         public static final String TEMPLATE_PAGE = "productPage";
     }
     
+    public class DisplayMyLibraryFeature {
+        public static final String LIBRARY_PAGE = "myLibraryPage";
+    }
 }
