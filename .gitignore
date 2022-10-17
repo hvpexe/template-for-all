@@ -13,3 +13,4 @@ nbdist/
 
 # End of https://www.toptal.com/developers/gitignore/api/netbeans
 TemplateForAll/nbproject/ant-deploy.xml
+/template-forr-all/target/
