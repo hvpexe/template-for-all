@@ -25,12 +25,10 @@ public class UserDAO implements Serializable {
         PreparedStatement stm = null;
         ResultSet rs = null;
         UserDTO result = null;
-        try
-        {
+        try {
             //1. make connection
             connection = DBConnection.getConnection();
-            if (connection != null)
-            {
+            if (connection != null) {
                 //2. create sql string
                 String sql = "select U.id, U.username, U.firstName, U.isAdmin, U.coin\n"
                         + "from [User] U\n"
@@ -42,8 +40,7 @@ public class UserDAO implements Serializable {
                 //4. execute query
                 rs = stm.executeQuery();
                 //5 process result
-                if (rs.next())
-                {
+                if (rs.next()) {
                     int id = rs.getInt("id");
                     String firstName = rs.getString("firstName");
                     boolean role = rs.getBoolean("isAdmin");
@@ -51,18 +48,14 @@ public class UserDAO implements Serializable {
                     result = new UserDTO(id, username, null, firstName, null, role, coin);
                 }
             }
-        } finally
-        {
-            if (rs != null)
-            {
+        } finally {
+            if (rs != null) {
                 rs.close();
             }
-            if (stm != null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if (connection != null)
-            {
+            if (connection != null) {
                 connection.close();
             }
         }
@@ -74,12 +67,10 @@ public class UserDAO implements Serializable {
         PreparedStatement stm = null;
         ResultSet rs = null;
         UserDTO result = null;
-        try
-        {
+        try {
             //1. make connection
             connection = DBConnection.getConnection();
-            if (connection != null)
-            {
+            if (connection != null) {
                 //2. create sql string
                 String sql = "SELECT [id]\n"
                         + "      ,[username]\n"
@@ -96,8 +87,7 @@ public class UserDAO implements Serializable {
                 //4. execute query
                 rs = stm.executeQuery();
                 //5 process result
-                if (rs.next())
-                {
+                if (rs.next()) {
                     int id = rs.getInt("id");
                     String firstName = rs.getString("firstName");
                     boolean role = rs.getBoolean("isAdmin");
@@ -105,18 +95,14 @@ public class UserDAO implements Serializable {
                     result = new UserDTO(id, username, null, firstName, null, role, coin);
                 }
             }
-        } finally
-        {
-            if (rs != null)
-            {
+        } finally {
+            if (rs != null) {
                 rs.close();
             }
-            if (stm != null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if (connection != null)
-            {
+            if (connection != null) {
                 connection.close();
             }
         }
@@ -129,12 +115,10 @@ public class UserDAO implements Serializable {
         PreparedStatement stm = null;
         ResultSet rs = null;
         UserDTO result = null;
-        try
-        {
+        try {
             //1. make connection
             connection = DBConnection.getConnection();
-            if (connection != null)
-            {
+            if (connection != null) {
                 //2. create sql string
                 String sql = "INSERT INTO [dbo].[User]\n"
                         + "           ([username]\n"
@@ -150,18 +134,51 @@ public class UserDAO implements Serializable {
                 //5 process result
                 return true;
             }
-        } finally
-        {
-            if (rs != null)
-            {
+        } finally {
+            if (rs != null) {
                 rs.close();
             }
-            if (stm != null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if (connection != null)
-            {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return false;
+    }
+
+    public static boolean addMoney(int id, int money)
+            throws ClassNotFoundException, SQLException {
+        Connection connection = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        UserDTO result = null;
+        try {
+            //1. make connection
+            connection = DBConnection.getConnection();
+            if (connection != null) {
+                //2. create sql string
+                String sql = "UPDATE [User]\n"
+                        + "SET coin = coin + ?\n"
+                        + "WHERE id = ?";
+                //3. create statement obj
+                stm = connection.prepareStatement(sql); // tao ra obj rong
+                stm.setInt(1, money);
+                stm.setInt(2, id);
+                //4. execute query
+                stm.executeUpdate();
+                //5 process result
+                return true;
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (connection != null) {
                 connection.close();
             }
         }

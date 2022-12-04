@@ -72,14 +72,17 @@
 
 
                     <div class=" col-12 p-0 d-flex justify-content-around">
-                        <div class="package p-4 col-6 d-flex flex-column">
-                            <button class=" button w-50 d-flex m-auto my-2 py-3 ">Chuyển khoản qua Momo</button>
-                            <span class="text pt-2">1. Quét mã QR bên dưới</span>
-                            <span class="text">2. Nhập số tiền bạn muốn nạp - tối thiểu 10.000 vnđ</span>
+                        <div class="package p-4 col-6 d-flex flex-column text-center">
+                            <div class="text col-12 text-center fs-3 fw-bold">Nạp tiền vào tài khoản</div>
+                            <span class="text fst-italic mb-4">(Tính năng demo thay thế cho thanh toán bằng Momo, VNPay)</span>
+                            
+                            <span class="text">Nhập số tiền bạn muốn nạp - tối thiểu 10.000 vnđ</span> 
                             <span class="text col-12 text-center fs-4 fw-bold ">1000 vnđ = 1000 xu</span>
-                            <span class="text">3. Hoàn tất quá trình chuyển tiền</span>
-                            <span class="text">Sau khoảng 1, 2 phút, tài khoản bạn trên web sẽ được cộng tiền.</span>
-                            <!--<img class="w-100 m-auto my-1" src="assets/images/figma/momo.jpg"/>-->
+                            <form action="AddMoneyController" method="GET">
+                                <input class="py-1 w-50 fs-4 my-2" type="number" name="money" required> <span class="text">vnđ</span>
+                                <input class="button w-50 d-flex m-auto my-2 py-3" type="submit" value="Nạp tiền">
+                            </form>
+                            <p class="text-danger fs-4">${requestScope.msgError}</p>
                         </div>
                     </div>
                     <div>

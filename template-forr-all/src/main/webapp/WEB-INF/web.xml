@@ -32,6 +32,10 @@
         <servlet-name>OrderHistoryController</servlet-name>
         <servlet-class>controller.OrderHistoryController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddMoneyController</servlet-name>
+        <servlet-class>controller.AddMoneyController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>searchController</servlet-name>
         <url-pattern>/searchController</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>OrderHistoryController</servlet-name>
         <url-pattern>/OrderHistoryController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMoneyController</servlet-name>
+        <url-pattern>/AddMoneyController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
