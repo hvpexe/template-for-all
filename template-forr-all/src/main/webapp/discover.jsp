@@ -45,7 +45,7 @@
                                                 Giá
                                             </div>
                                             <div class="template-info-detail">
-                                                ${template.price} XU
+                                                ${template.getPriceWithFormat()} XU
                                             </div>
                                         </div>
                                         <div class="template-info">

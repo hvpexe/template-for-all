@@ -33,42 +33,23 @@
                 </div>
                 <div  class="section-right col-12 gap-2 col-md-6">
                     <h1 class="h1 col-12 mb-5">${templateDto.name}</h1>
-                    <!--                    <div class="col-12 d-flex my-5 mb-4">
-                                            <div class="col-4 d-flex flex-column gap-10">
-                                                <span class="text text-bold col-12">Tác giả</span>
-                                                <span class="col-12">
-                                                    <img src="assets/images/figma/user1.png" class="img-fluid rounded-circle" width="20%">
-                                                    <span class="text text-bold ms-3">Account1</span>
-                                                </span>
-                                            </div>
-                                            <div class="col-4 d-flex flex-column gap-10">
-                                                <span class="text text-bold col-12">Sở hữu</span>
-                                                <span class="col-12">
-                                                    <img src="assets/images/figma/user2.png" class="img-fluid rounded-circle" width="20%">
-                                                    <span class="text text-bold ms-3">Account2</span>
-                                                </span>
-                                            </div>
-                                        </div>-->
                     <div class="text text-description text text-bold my-5 col-12 d-flex flex-column">
                         ${templateDto.description}
                     </div>
                     <div class="col-12 d-flex flex-wrap my-5 " style="gap:10px">
-                        <span class="category fw-bold hb-1">Ngắn</span>
-                        <span class="category fw-bold hb-1">Dài</span>
-                        <span class="category fw-bold hb-1">Ngắn nhất</span>
-                        <span class="category fw-bold hb-1">Ngắn</span>
-                        <span class="category fw-bold hb-1">Dài</span>
-                        <span class="category fw-bold hb-1">Ngắn</span>
-                        <span class="category fw-bold hb-1">Ngắn hơn</span>
-                        <span class="category fw-bold hb-1">Ngắn nhất</span>
-                        <span class="category fw-bold hb-1">Ngắn hơn</span>
-                        <span class="category fw-bold hb-1">Dài</span>
-                        <span class="category fw-bold hb-1">Ngắn hơn</span>
-                        <span class="category fw-bold hb-1">Ngắn nhất</span>
+                        <span class="category fw-bold hb-1">Blue</span>
+                        <span class="category fw-bold hb-1">Green</span>
+                        <span class="category fw-bold hb-1">Collage</span>
+                        <span class="category fw-bold hb-1">Sale</span>
+                        <span class="category fw-bold hb-1">Thank you</span>
+                        <span class="category fw-bold hb-1">Yellow</span>
+                        <span class="category fw-bold hb-1">Nature</span>
+                        <span class="category fw-bold hb-1">Event</span>
+                        <span class="category fw-bold hb-1">Menu</span>
                     </div>
-                    <div class="h4 text col-12 d-flex  sale">
+                    <div class="h4 text col-12 d-flex sale">
                         <span class="col">Giá Template</span>
-                        <span class="text text-bold h3 raleway fw-bold">${templateDto.price} Xu</span>
+                        <span class="text text-bold h3 raleway fw-bold">${templateDto.getPriceWithFormat()} Xu</span>
                     </div>
 
                     <div class="d-flex gap-3 justify-content-between">
@@ -78,7 +59,7 @@
                         <c:if test="${!templateDto.isPay}">
                             <a class="button text-center col text-decoration-none text-white hb-1 " onclick="Buy('#confirm-box')">Mua Ngay</a>
                         </c:if>
-                        
+
                         <!--<a class="button cart text-center col text-decoration-none hb-1 ">Them vao Gio hang</a>-->
                     </div>
             </section>
@@ -100,7 +81,7 @@
                                             Giá
                                         </div>
                                         <div class="template-info-detail raleway fw-bold">
-                                            10000 XU
+                                            10.000 XU
                                         </div>
                                     </div>
                                     <div class="template-info">

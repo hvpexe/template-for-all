@@ -46,8 +46,6 @@ public class BuyTemplateController extends HttpServlet {
         //get session
         HttpSession session = request.getSession();
         //get parameter
-        System.out.println(request.getParameter("templateId"));
-        System.out.println(request.getParameter("price"));
         int templateId = Integer.parseInt(request.getParameter("templateId"));
         UserDTO user = (UserDTO) session.getAttribute("USER");
         int price = Integer.parseInt(request.getParameter("price"));

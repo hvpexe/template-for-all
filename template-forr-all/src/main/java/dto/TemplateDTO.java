@@ -78,8 +78,10 @@ public class TemplateDTO implements Serializable {
         return name;
     }
 
-    public String getPrice () {
-        
+    public Integer getPrice () {
+        return price;
+    }
+    public String getPriceWithFormat () {
         return Helper.formatMoney(price);
     }
 
