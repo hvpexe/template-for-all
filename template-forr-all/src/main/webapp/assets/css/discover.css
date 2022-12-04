@@ -87,7 +87,7 @@ section {
     aspect-ratio: 8/11;
     object-fit: cover;
     border-radius: 24px;
-        background-position: center;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -140,5 +140,5 @@ section {
     color: #FFFFFF;
     font-weight: 700;
     font-size: 16px;
-    padding-top: 12px;
+    padding: 12px 8px;
 }

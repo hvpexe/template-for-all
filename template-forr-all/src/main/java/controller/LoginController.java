@@ -53,7 +53,7 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("USER", userDto);
                 url = AppConstants.LoginFeatures.DISCOVER_PAGE;
             } else {
-                session.setAttribute("LOGIN_FAILED", "username or password is incorrect!"); 
+                session.setAttribute("LOGIN_FAILED", "Username or Password is Incorrect!"); 
             }
             
         } catch (SQLException ex) {

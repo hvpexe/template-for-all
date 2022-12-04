@@ -38,4 +38,15 @@ public class Helper implements Serializable{
         }
 
     }
+    public static String formatMoney(Integer money)
+    {
+        StringBuilder sb = new StringBuilder(money.toString());
+        int j=0;
+        for (int i = sb.length() - 1; i >= 0; i--) {
+            if(++j%3==0){
+                sb.insert(i, '.');
+            }
+        }
+        return sb.toString();
+    }
 }

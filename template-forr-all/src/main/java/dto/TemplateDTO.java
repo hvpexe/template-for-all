@@ -6,6 +6,7 @@
 package dto;
 
 import java.io.Serializable;
+import utils.Helper;
 
 /**
  *
@@ -15,7 +16,7 @@ public class TemplateDTO implements Serializable {
 
     int id;
     String name;
-    int price;
+    Integer price;
     String resourcesLink;
     int categoryId;
     String imgLink;
@@ -24,10 +25,10 @@ public class TemplateDTO implements Serializable {
     boolean isPay;
 
     //constructors
-    public TemplateDTO() {
+    public TemplateDTO () {
     }
 
-    public TemplateDTO(int id, String name, int price, String resourcesLink, int categoryId, String imgLink) {
+    public TemplateDTO (int id, String name, int price, String resourcesLink, int categoryId, String imgLink) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -36,7 +37,7 @@ public class TemplateDTO implements Serializable {
         this.imgLink = imgLink;
     }
 
-    public TemplateDTO(int id, String name, int price, String imgLink, String categoryName) {
+    public TemplateDTO (int id, String name, int price, String imgLink, String categoryName) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -44,14 +45,14 @@ public class TemplateDTO implements Serializable {
         this.categoryName = categoryName;
     }
 
-    public TemplateDTO(String name, int price, String imgLink, String description) {
+    public TemplateDTO (String name, int price, String imgLink, String description) {
         this.name = name;
         this.price = price;
         this.imgLink = imgLink;
         this.description = description;
     }
 
-    public TemplateDTO(String name, int price, String resourcesLink, String imgLink, String description, boolean isPay) {
+    public TemplateDTO (String name, int price, String resourcesLink, String imgLink, String description, boolean isPay) {
         this.name = name;
         this.price = price;
         this.imgLink = imgLink;
@@ -60,77 +61,78 @@ public class TemplateDTO implements Serializable {
         this.isPay = isPay;
     }
 
-    public boolean isIsPay() {
+    public boolean isIsPay () {
         return isPay;
     }
 
     // getters
-    public void setIsPay(boolean isPay) {
+    public void setIsPay (boolean isPay) {
         this.isPay = isPay;
     }
 
-    public int getId() {
+    public int getId () {
         return id;
     }
 
-    public String getName() {
+    public String getName () {
         return name;
     }
 
-    public int getPrice() {
-        return price;
+    public String getPrice () {
+        
+        return Helper.formatMoney(price);
     }
 
-    public String getResourcesLink() {
+    public String getResourcesLink () {
         return resourcesLink;
     }
 
-    public int getCategoryId() {
+    public int getCategoryId () {
         return categoryId;
     }
 
-    public String getImgLink() {
+    public String getImgLink () {
         return imgLink;
     }
 
-    public String getCategoryName() {
+    public String getCategoryName () {
         return categoryName;
     }
 
-    public String getDescription() {
+    public String getDescription () {
         return description;
     }
     // setters
 
-    public void setId(int id) {
+    public void setId (int id) {
         this.id = id;
     }
 
-    public void setName(String name) {
+    public void setName (String name) {
         this.name = name;
     }
 
-    public void setPrice(int price) {
+    public void setPrice (int price) {
         this.price = price;
     }
 
-    public void setResourcesLink(String resourcesLink) {
+    public void setResourcesLink (String resourcesLink) {
         this.resourcesLink = resourcesLink;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId (int categoryId) {
         this.categoryId = categoryId;
     }
 
-    public void setImgLink(String imgLink) {
+    public void setImgLink (String imgLink) {
         this.imgLink = imgLink;
     }
 
-    public void setCategoryName(String categoryName) {
+    public void setCategoryName (String categoryName) {
         this.categoryName = categoryName;
     }
 
-    public void setDescription(String description) {
+    public void setDescription (String description) {
         this.description = description;
     }
 

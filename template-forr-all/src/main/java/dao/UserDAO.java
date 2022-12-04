@@ -167,5 +167,4 @@ public class UserDAO implements Serializable {
         }
         return false;
     }
-
 }

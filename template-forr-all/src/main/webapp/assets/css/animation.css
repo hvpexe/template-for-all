@@ -67,3 +67,10 @@
 .hb-2:active{
     box-shadow: 0 -15px 15px 0 inset var(--bs-gray-50);
 }
+.h-underline{
+    cursor: pointer;
+    text-decoration: none;
+}
+.h-underline:hover{
+    text-decoration: underline;
+}

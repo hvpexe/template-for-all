@@ -61,7 +61,7 @@ public class BuyTemplateController extends HttpServlet {
         try {
 
             System.out.println(user);
-            if (user.getCoin() - price < 0) {
+            if (user.getCoins() - price < 0) {
                 result += AppConstants.BuyTemplateControllerFeature.FAILED_INSUFFICIENT_MONEY;
                 return;
             }
@@ -69,7 +69,7 @@ public class BuyTemplateController extends HttpServlet {
                 return;
             }
             if (TemplateDAO.buyAndCreateOrderDate(user.getId(), templateId, price)) {
-                user.setCoin(user.getCoin() - price);
+                user.setCoin(user.getCoins() - price);
                 session.setAttribute("USER", user);
                 result = AppConstants.BuyTemplateControllerFeature.SUCCESS;
             }

@@ -6,6 +6,7 @@
 package dto;
 
 import java.io.Serializable;
+import utils.Helper;
 
 /**
  *
@@ -19,13 +20,13 @@ public class UserDTO implements Serializable {
     String firstName;
     String lastName;
     boolean isAdmin;
-    int coin;
+    Integer coin;
 
     // constructor
-    public UserDTO() {
+    public UserDTO () {
     }
 
-    public UserDTO(int id, String username, String password, String firstName, String lastName, boolean isAdmin, int coin) {
+    public UserDTO (int id, String username, String password, String firstName, String lastName, boolean isAdmin, int coin) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -35,62 +36,64 @@ public class UserDTO implements Serializable {
         this.coin = coin;
     }
 
-  
     // getters
-    public int getId() {
+    public int getId () {
         return id;
     }
 
-    public String getUsername() {
+    public String getUsername () {
         return username;
     }
 
-    public String getPassword() {
+    public String getPassword () {
         return password;
     }
 
-    public String getFirstName() {
+    public String getFirstName () {
         return firstName == null ? username : firstName;
     }
 
-    public String getLastName() {
+    public String getLastName () {
         return lastName;
     }
 
-    public boolean isIsAdmin() {
+    public boolean isIsAdmin () {
         return isAdmin;
     }
-    public int getCoin() {
+
+    public String getCoin () {
+        return Helper.formatMoney(coin);
+    }
+    public int getCoins () {
         return coin;
     }
     // setters
 
-
-    public void setId(int id) {
+    public void setId (int id) {
         this.id = id;
     }
 
-    public void setUsername(String username) {
+    public void setUsername (String username) {
         this.username = username;
     }
 
-    public void setPassword(String password) {
+    public void setPassword (String password) {
         this.password = password;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName (String firstName) {
         this.firstName = firstName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName (String lastName) {
         this.lastName = lastName;
     }
 
-    public void setIsAdmin(boolean isAdmin) {
+    public void setIsAdmin (boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
 
-    public void setCoin(int coin) {
+    public void setCoin (int coin) {
         this.coin = coin;
     }
 
