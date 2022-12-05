@@ -8,6 +8,7 @@ package utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Properties;
 import javax.servlet.ServletContext;
 
@@ -48,5 +49,12 @@ public class Helper implements Serializable{
             }
         }
         return sb.toString();
+    }
+
+    public static String ToDateSeperator (Timestamp orderDate) {
+        String day = "Th\u1ee9 " + (orderDate.getDay() + 1);
+        if (orderDate.getDay() == 0)
+            day = "Ch\u1ee7 Nh\u1eadt";
+        return day + ", " + orderDate.getDate() + "-" + orderDate.getMonth() + "-" + (orderDate.getYear() + 1900);
     }
 }

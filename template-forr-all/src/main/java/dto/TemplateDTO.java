@@ -14,6 +14,8 @@ import utils.Helper;
  */
 public class TemplateDTO implements Serializable {
 
+    
+
     int id;
     String name;
     Integer price;

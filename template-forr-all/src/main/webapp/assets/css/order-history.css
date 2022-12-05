@@ -1,0 +1,11 @@
+body{
+    min-width: 100vh;
+    background: linear-gradient(176.84deg, #BFE4FF 0%, #FFFFFF 87.67%);
+}
+.order-day {
+    background: #BFE4FF;
+    border-radius: 7px 7px 0px 0px;
+}
+.footer {
+    margin-top:auto;
+}

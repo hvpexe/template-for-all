@@ -4,12 +4,25 @@
  */
 package controller;
 
+import dao.OrderDetailDAO;
+import dto.OrderDetailDTO;
+import dto.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import net.sourceforge.jtds.jdbc.DateTime;
 
 /**
  *
@@ -30,7 +43,37 @@ public class OrderHistoryController extends HttpServlet {
     protected void processRequest (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
+        UserDTO user = null;
+        try {
+            user = (UserDTO) session.getAttribute("USER");
+
+            Hashtable<Timestamp, List<OrderDetailDTO>> orders;
+            if (user.isIsAdmin()) {
+                orders = OrderDetailDAO.GetAllOrders();
+            } else {
+                orders = OrderDetailDAO.GetUserOrders(user.getId());
+            }
+            for (Object key : orders.keySet().toArray()) {
+                System.out.println(key);
+                if(orders.get(key)instanceof List)
+                for (OrderDetailDTO orderDetailDTO : orders.get(key)) {
+                    System.out.println(orderDetailDTO);
+                }
+            }
+            request.setAttribute("ORDERS", orders);
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderHistoryController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(OrderHistoryController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (user == null) {
+                response.sendRedirect("");
+                return;
+            }
+            request.getRequestDispatcher("order-history.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

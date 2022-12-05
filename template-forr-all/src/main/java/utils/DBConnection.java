@@ -32,16 +32,7 @@ public class DBConnection implements Serializable {
         }
         return con;
     }
-    public static void main(String[] args) {
-        try
-        {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
             System.out.println(getConnection());
-        } catch (ClassNotFoundException ex)
-        {
-            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex)
-        {
-            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

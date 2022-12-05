@@ -26,9 +26,23 @@
             <c:import url="header.jsp" />
         </div>
         <section class="section col-12">
+            <div class="my-5 raleway text-center col">
+                <h1 class="search-title">Lịch Sử Giao Dịch</h1>
+            </div>
             <div class="main col-12 p-4 d-flex justify-content-center">
                 <div class="container row p-0">
-                    ${ORDERS}
+                    <c:forEach items="${ORDERS.keys()}" var="key" >
+                        <div class="order-day ">
+                            ${key}
+                        </div>
+                        <c:catch var="e">
+
+                            <c:forEach items="${ORDERS.get(key)}" var="o" >
+                                ${o}
+                            </c:forEach>
+                        </c:catch>
+                        ${e}
+                    </c:forEach>
                 </div>
             </div>
         </section>
