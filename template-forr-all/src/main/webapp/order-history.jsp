@@ -19,7 +19,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
         <script src="Jquery-core-3.0.2/jquery.js"></script>
-        <link rel="stylesheet" href="assets/css/order-history.css"/>
+        <link rel="stylesheet" href="assets/css/discover.css">
+        <link rel="stylesheet" href="assets/css/orderhistory.css"/>
     </head>
     <body>
         <div class="container">
@@ -29,22 +30,53 @@
             <div class="my-5 raleway text-center col">
                 <h1 class="search-title">Lịch Sử Giao Dịch</h1>
             </div>
-            <div class="main col-12 p-4 d-flex justify-content-center">
-                <div class="container row p-0">
-                    <c:forEach items="${ORDERS.keys()}" var="key" >
-                        <div class="order-day ">
-                            ${key}
+            <div class="container row p-0 m-auto">
+                <div class="col-md-10 col m-auto ">
+                    <div class="col loc d-flex gap-2 my-2">
+                        <span class="text">Lọc Theo</span>
+                        <select class="selection">
+                            <option value="3" selected>3 tháng gần nhất</option>
+                            <option value="6">6 tháng gần nhất</option>
+                            <option value="12">12 tháng gần nhất</option>
+                            <option value="all">Tất cả</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <c:forEach items="${ORDERS.keys()}" var="key" >
+                            <div class="order-day ">
+                                ${key}
+                            </div>
+                            <c:catch var="e">
+                                <c:forEach items="${ORDERS.get(key)}" var="o" >
+                                    ${o}
+                                </c:forEach>
+                            </c:catch>
                         </div>
-                        <c:catch var="e">
-
-                            <c:forEach items="${ORDERS.get(key)}" var="o" >
-                                ${o}
-                            </c:forEach>
-                        </c:catch>
-                        ${e}
                     </c:forEach>
                 </div>
-            </div>
+                <!--            <div class="main col-12 p-4 d-flex justify-content-center">
+                
+                                <div class="container row p-0">
+                                    <div class="col-md-10 col">
+                                        <span class="text">Lọc Theo</span>
+                                        <select>
+                
+                                        </select>
+                                    </div>
+                <%--<c:forEach items="${ORDERS.keys()}" var="key" >--%>
+                    <div class="order-day ">
+                ${key}
+                         </div>
+                <%--<c:catch var="e">--%>
+        
+                <%--<c:forEach items="${ORDERS.get(key)}" var="o" >--%>
+                ${o}
+                <%--</c:forEach>--%>
+                <%--</c:catch>--%>
+                ${e}
+                <%--</c:forEach>--%>
+                         </div>
+                        </div>-->
         </section>
         <div class="container">
             <c:import url="footer.jsp" />

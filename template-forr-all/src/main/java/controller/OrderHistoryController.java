@@ -57,10 +57,10 @@ public class OrderHistoryController extends HttpServlet {
             }
             for (Object key : orders.keySet().toArray()) {
                 System.out.println(key);
-                if(orders.get(key)instanceof List)
-                for (OrderDetailDTO orderDetailDTO : orders.get(key)) {
-                    System.out.println(orderDetailDTO);
-                }
+                if (orders.get(key) instanceof List)
+                    for (OrderDetailDTO orderDetailDTO : orders.get(key)) {
+                        System.out.println(orderDetailDTO);
+                    }
             }
             request.setAttribute("ORDERS", orders);
         } catch (SQLException ex) {
@@ -69,10 +69,10 @@ public class OrderHistoryController extends HttpServlet {
             Logger.getLogger(OrderHistoryController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (user == null) {
-                response.sendRedirect("");
+                response.sendRedirect("loginPage");
                 return;
             }
-            request.getRequestDispatcher("order-history.jsp").forward(request, response);
+            request.getRequestDispatcher("order-histsory.jsp").forward(request, response);
         }
     }
 
