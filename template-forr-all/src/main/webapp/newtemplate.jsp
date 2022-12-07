@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="assets/css/animation.css" />
     <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
     <script src="Jquery-core-3.0.2/jquery.js"></script>
-    <link rel="stylesheet" href="assets/css/templateProduct.css" />
     <!--Css file for tag-->
+    <link rel="stylesheet" href="assets/css/templateProduct.css" />
     <link rel="stylesheet" href="assets/css/tagStyle.css">
 
 </head>
@@ -66,8 +66,7 @@
                         <!-- description -->
                         <label for="txtDescription">Mô tả <font color="red">*</font></label>
                         <textarea name="txtDescription"
-                            class="text text-description fw-light col-12 d-flex flex-column">${templateDto.description}
-                        </textarea>
+                            class="text text-description fw-light col-12 d-flex flex-column">${templateDto.description}</textarea>
                         <!-- template price -->
                         <label for="txtPrice">Giá Template <font color="red">*</font></label>
                         <input class="col-4" type="number" min="1" step="1" name="txtPrice" /> Xu</br>

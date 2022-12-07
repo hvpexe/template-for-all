@@ -146,3 +146,7 @@
     margin:auto;
     background: white;
 }
+select {
+    border-radius: 8px;
+}
+#f6f7fb
