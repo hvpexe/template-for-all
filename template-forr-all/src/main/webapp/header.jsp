@@ -11,10 +11,11 @@
 <link rel="stylesheet" href="assets/css/header.css"/>
 <header class="header">
     <nav class="header-container nav justify-content-center">
-        <div class="navbar-brand c-pointer d-flex align-items-center">
+        <a class="navbar-brand c-pointer d-flex align-items-center"
+           href="displayDiscoverPage">
             <img src="assets/images/figma/logo_img.png">
             <span class="ms-2">Template For All</span>
-        </div>
+        </a>
         <div class="nav-item header-navigation col d-flex justify-content-around mx-lg-3">
             <a class="active" href="displayDiscoverPage">Trang chủ</a>
             <a href="#">Video</a>
