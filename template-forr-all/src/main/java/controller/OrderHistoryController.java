@@ -11,9 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +21,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import net.sourceforge.jtds.jdbc.DateTime;
 
 /**
  *
@@ -51,17 +49,18 @@ public class OrderHistoryController extends HttpServlet {
 
             Hashtable<Timestamp, List<OrderDetailDTO>> orders;
             if (user.isIsAdmin()) {
-                orders = OrderDetailDAO.GetAllOrders();
+                orders = OrderDetailDAO.GetRechargeOrders();
             } else {
                 orders = OrderDetailDAO.GetUserOrders(user.getId());
             }
+            LinkedList<Object> keys = new LinkedList<>();
             for (Object key : orders.keySet().toArray()) {
-                System.out.println(key);
-                if (orders.get(key) instanceof List)
-                    for (OrderDetailDTO orderDetailDTO : orders.get(key)) {
-                        System.out.println(orderDetailDTO);
-                    }
+                keys.addFirst(key);
+
             }
+            System.out.println(keys);
+            request.setAttribute("MONTH", (long) 1000 * 60 * 60 * 24 * 30);
+            request.setAttribute("KEYS", keys);
             request.setAttribute("ORDERS", orders);
         } catch (SQLException ex) {
             Logger.getLogger(OrderHistoryController.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,7 +71,7 @@ public class OrderHistoryController extends HttpServlet {
                 response.sendRedirect("loginPage");
                 return;
             }
-            request.getRequestDispatcher("order-histsory.jsp").forward(request, response);
+            request.getRequestDispatcher("order-history.jsp").forward(request, response);
         }
     }
 
@@ -104,7 +103,19 @@ public class OrderHistoryController extends HttpServlet {
     @Override
     protected void doPost (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            long time = Long.parseLong(request.getParameter("time"));
+            int userid = Integer.parseInt(request.getParameter("userid"));
+            int money = Integer.parseInt(request.getParameter("money"));
+            OrderDetailDAO.approveOrder(userid, money, time);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderHistoryController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(OrderHistoryController.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            response.sendRedirect("OrderHistoryController");
+        }
     }
 
     /**

@@ -23,7 +23,6 @@ body{
     /* Inside auto layout */
 
     flex: none;
-    order: 0;
     flex-grow: 0;
 }
 .container select.selection{
@@ -38,7 +37,7 @@ body{
     border-radius: 100px;
 
     font-size: 20px;
-    line-height: calc(1em s*  1.4);
+    line-height: calc(1em *  1.4);
     /* identical to box height, or 175% */
     outline:none;
     letter-spacing: 0.05em;
@@ -48,9 +47,9 @@ body{
     /* Inside auto layout */
 
     flex: none;
-    order: 1;
     flex-grow: 0;
     position: relative;
+    font-weight: 500;
 }
 .container select.selection:focus:hover,.container select.selection:focus{
     border-radius:  32px 32px 00px 00px;
@@ -67,4 +66,42 @@ body{
 }
 .container .selection option{
     border:2px solid #1D2B4F;
+}
+.container .order-table {
+    background: rgba(146, 148, 151, 0.12);
+    border-radius: 10px;
+    overflow-x:hidden;
+}
+.container .order-table td{
+    vertical-align: middle;
+    font-weight: 700;
+}
+.container .order-section {
+    display:none;
+}
+.container .order-section:has(.order:not(.d-none)) {
+    display:block;
+}
+.order-table .order-day{
+    font-weight: 400;
+    background: #BFE4FF;
+
+}
+.order .recharge {
+    color:var(--bs-success);
+}
+.order .recharge::before {
+    content:"+";
+    display: inline;
+    position: static;
+}
+.order .purchase::before
+{
+    content:"-";
+    display: inlines;
+    position: static;
+}
+.order .recharge.Processing\.\.\. {
+    color:var(--bs-warning);
+
 }

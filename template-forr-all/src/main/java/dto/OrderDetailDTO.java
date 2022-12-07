@@ -12,21 +12,24 @@ import utils.Helper;
  * @author Admin
  */
 public class OrderDetailDTO {
+
     private UserDTO user;
     private TemplateDTO template;
     private Timestamp orderDate;
     private String orderType;
     private Integer orderPrice;
+    private boolean isApproved;
 
     public OrderDetailDTO () {
     }
 
-    public OrderDetailDTO (UserDTO user, TemplateDTO template, Timestamp orderDate, String orderType, int orderPrice) {
+    public OrderDetailDTO (UserDTO user, TemplateDTO template, Timestamp orderDate, String orderType, int orderPrice, boolean isApproved) {
         this.user = user;
         this.template = template;
         this.orderDate = orderDate;
         this.orderType = orderType;
         this.orderPrice = orderPrice;
+        this.isApproved = isApproved;
     }
 
     public UserDTO getUser () {
@@ -48,6 +51,7 @@ public class OrderDetailDTO {
     public String getOrderPrice () {
         return Helper.formatMoney(orderPrice);
     }
+
     public int getOrderPrices () {
         return orderPrice;
     }
@@ -70,6 +74,14 @@ public class OrderDetailDTO {
 
     public void setOrderPrice (int orderPrice) {
         this.orderPrice = orderPrice;
+    }
+
+    public String isApproved () {
+        return this.isApproved ? "Approved" : "Processing...";
+    }
+
+    public void setIsApproved (boolean approve) {
+        this.isApproved = approve;
     }
 
     @Override

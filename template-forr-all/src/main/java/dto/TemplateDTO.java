@@ -140,4 +140,9 @@ public class TemplateDTO implements Serializable {
         this.description = description;
     }
 
+    @Override
+    public String toString () {
+        return "TemplateDTO{" + "id=" + id + ", name=" + name + ", price=" + price + ", resourcesLink=" + resourcesLink + ", categoryId=" + categoryId + ", imgLink=" + imgLink + ", categoryName=" + categoryName + ", description=" + description + ", isPay=" + isPay + '}';
+    }
+
 }

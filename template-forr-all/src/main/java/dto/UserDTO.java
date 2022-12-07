@@ -49,12 +49,16 @@ public class UserDTO implements Serializable {
         return password;
     }
 
+    public String getName () {
+        return firstName == null ? "" : firstName + " " + getLastName();
+    }
+
     public String getFirstName () {
         return firstName == null ? username : firstName;
     }
 
     public String getLastName () {
-        return lastName;
+        return lastName == null ? "" : lastName;
     }
 
     public boolean isIsAdmin () {
@@ -64,6 +68,7 @@ public class UserDTO implements Serializable {
     public String getCoin () {
         return Helper.formatMoney(coin);
     }
+
     public int getCoins () {
         return coin;
     }
@@ -95,6 +100,11 @@ public class UserDTO implements Serializable {
 
     public void setCoin (int coin) {
         this.coin = coin;
+    }
+
+    @Override
+    public String toString () {
+        return "UserDTO{" + "id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", isAdmin=" + isAdmin + ", coin=" + coin + '}';
     }
 
 }

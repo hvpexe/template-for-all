@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dao.OrderDetailDAO;
 import dao.UserDAO;
 import dto.UserDTO;
 import java.io.IOException;
@@ -28,27 +29,33 @@ public class AddMoneyController extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
+     *
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = AppConstants.LoginFeatures.INVALID_PAGE;
         try {
             int money = Integer.parseInt(request.getParameter("money"));
             if (money < 10000) {
-                request.setAttribute("msgError", "Tối thiểu 10.000 vnđ");
+                request.setAttribute("msgError", "Số tiền nạp tối thiểu là 10.000 vnđ");
                 url = "payment.jsp";
             } else {
                 HttpSession session = request.getSession();
                 UserDTO userDto = (UserDTO) session.getAttribute("USER");
-                UserDAO.addMoney(userDto.getId(), money);
+                if (!userDto.isIsAdmin())
+                    OrderDetailDAO.addMoneyOrder(userDto.getId(), money);
+                else
+                    UserDAO.addMoney(userDto.getId(), money);
                 userDto = UserDAO.getUserByUserName(userDto.getUsername());
                 session.setAttribute("USER", userDto);
+                request.setAttribute("msgSuccess", "Đơn của bạn đã được gửi thành công<br> Hãy chờ admin duyệt cho bạn nhé <3");
                 url = "payment.jsp";
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,13 +71,14 @@ public class AddMoneyController extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
+     *
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -78,13 +86,14 @@ public class AddMoneyController extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
+     *
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -95,7 +104,7 @@ public class AddMoneyController extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+    public String getServletInfo () {
         return "Short description";
     }// </editor-fold>
 

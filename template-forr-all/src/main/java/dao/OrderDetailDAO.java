@@ -67,7 +67,8 @@ public class OrderDetailDAO {
             TemplateDTO template = TemplateDAO.getTemplateByID(rs.getInt("templateId"));
             Timestamp orderDate = rs.getTimestamp("orderDate");
             currentDate = Helper.ToDateSeperator(orderDate);
-            OrderDetailDTO order = new OrderDetailDTO(user, template, orderDate, rs.getString("orderType"), rs.getInt("orderPrice"));
+            OrderDetailDTO order = new OrderDetailDTO(user, template, orderDate, rs.getString("orderType")
+                    , rs.getInt("orderPrice"),rs.getBoolean("isApproved"));
             //2 set data
             if (key == null || !currentDate.equals(key)) {
                 orders = new LinkedList();
@@ -82,14 +83,83 @@ public class OrderDetailDAO {
 
     private static Timestamp key;
 
-    public static Hashtable<Timestamp, List<OrderDetailDTO>> GetAllOrders () throws SQLException, ClassNotFoundException {
-        sql = SELECT_ALL_SQL;
+    public static Hashtable<Timestamp, List<OrderDetailDTO>> GetRechargeOrders () throws SQLException, ClassNotFoundException {
+        sql = SELECT_ALL_SQL + "WHERE orderType='recharge' Order By OrderDate DESC ";
         return Get(sql);
     }
 
     public static Hashtable<Timestamp, List<OrderDetailDTO>> GetUserOrders (int id) throws ClassNotFoundException, SQLException {
-        sql = SELECT_ALL_SQL + "WHERE userId = ?";
+        sql = SELECT_ALL_SQL + "WHERE userId = ? Order By OrderDate ASC";
         return Get(sql, id);
     }
+    private static final String CREATE_RECHARGE_ORDER
+            = "INSERT INTO [OrderDetail]\n"
+            + "           ([userId]\n"
+            + "           ,[orderDate]\n"
+            + "           ,[orderType]\n"
+            + "           ,[orderPrice]\n"
+            + "           ,[isApproved])\n"
+            + "     VALUES\n"
+            + "           (?,?,?,?,?)";
 
+    public static boolean addMoneyOrder (int userId, int money) throws SQLException, ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String sql = CREATE_RECHARGE_ORDER;
+            conn = DBConnection.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setObject(1, userId);
+            ps.setObject(2, new Timestamp(System.currentTimeMillis()));
+            ps.setObject(3, "recharge");
+            ps.setObject(4, money);
+            ps.setObject(5, false);
+            return ps.executeUpdate() > 0;
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+    }
+    private static final String UPDATE_RECHARGE_ORDER
+            = "UPDATE [OrderDetail]\n"
+            + "  Set isApproved = 1\n"
+            + "  where orderDate = ? and isApproved = 0";
+
+    public static boolean approveOrder (int userId, int money, long time) throws SQLException, ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String sql = UPDATE_RECHARGE_ORDER;
+            conn = DBConnection.getConnection();
+            ps = conn.prepareStatement(sql);
+            System.out.println(userId);
+            System.out.println(money);
+            System.out.println(new Timestamp(time));
+            ps.setTimestamp(1, new Timestamp(time));
+            if (ps.executeUpdate() > 0) {
+                UserDAO.addMoney(userId, money);
+                return true;
+            }
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return false;
+    }
 }

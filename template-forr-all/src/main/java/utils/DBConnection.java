@@ -23,9 +23,10 @@ public class DBConnection implements Serializable {
         //1. load driver
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         //2. make connection string
-        String con_url = "jdbc:sqlserver://139.59.127.140:1433;database=TemplateForAll;encrypt=true;trustServerCertificate=true;CharacterSet=UTF-8";
+//        String con_url = "jdbc:sqlserver://139.59.127.140:1433;database=TemplateForAll;encrypt=true;trustServerCertificate=true;CharacterSet=UTF-8";
+        String con_url = "jdbc:sqlserver://localhost:1433;database=TemplateForAll;encrypt=true;trustServerCertificate=true;CharacterSet=UTF-8";
         //3. open connection
-        con = DriverManager.getConnection(con_url, "sa", "Huynhvanphu102Exe");
+        con = DriverManager.getConnection(con_url, "sa", "12345");
         //4. return conenction
         if (con != null) {
             System.out.println("=========connection ok=======");
