@@ -89,7 +89,7 @@ public class OrderDetailDAO {
     }
 
     public static Hashtable<Timestamp, List<OrderDetailDTO>> GetUserOrders (int id) throws ClassNotFoundException, SQLException {
-        sql = SELECT_ALL_SQL + "WHERE userId = ? Order By OrderDate ASC";
+        sql = SELECT_ALL_SQL + "WHERE userId = ? Order By OrderDate DESC";
         return Get(sql, id);
     }
     private static final String CREATE_RECHARGE_ORDER

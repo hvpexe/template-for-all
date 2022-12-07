@@ -60,7 +60,8 @@
                                     <div data-time="${now- o.orderDate.getTime()}" class="order d-flex align-items-center fw-bold border-bottom">
                                         <span class="g-col-1 inter p-0"><img class="img-fluid p-3" src="assets/images/figma/${o.orderType}.png"></span>
 
-                                        <span class="col-5 inter d-flex template-name"><img class="w-25 img-object-fit-cover" src="${o.template.imgLink}" >
+                                        <span class="col-5 inter d-flex template-name">
+                                            <img class="w-25 py-1 px-3 img-object-fit-cover" src="${o.template.imgLink}" >
                                             <span>
                                                 <div>
                                                     ${o.template.name}
@@ -93,7 +94,7 @@
                                                     <input type="hidden" name="userid" value="${o.user.id}"/>
                                                 </form>
                                             </c:if>
-                                            <c:if test="${!USER.isAdmin}"> 
+                                            <c:if test="${!USER.isAdmin && o.orderType=='recharge'}"> 
                                                 ${o.isApproved()}
                                             </c:if>
                                         </span>
