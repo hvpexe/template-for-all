@@ -4,13 +4,24 @@
  */
 package controller;
 
+import dao.TemplateDAO;
+import dto.TemplateDTO;
+import dto.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import utils.AppConstants;
 
 /**
  *
@@ -32,9 +43,35 @@ public class AddTemplateController extends HttpServlet {
     protected void processRequest (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-           
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
+        ServletContext sc = request.getServletContext();
+        String url = AppConstants.AddTemplateControllerFeature.INVALID;
+        try {
+            UserDTO userDto = (UserDTO) session.getAttribute("USER");
+            if(!userDto.isIsAdmin()){
+                return;
+            }
+            Integer templateId = null;
+            String name = request.getParameter("txtName");
+            Integer price = Integer.parseInt(request.getParameter("txtPrice"));
+            Integer categoryId = Integer.parseInt(request.getParameter("txtCategoryId"));
+            String description = request.getParameter("txtDescription");
+            Part fileZip = request.getPart("fileZip");
+            Part fileImgLink = request.getPart("fileImgLink");
+
+            TemplateDTO template = new TemplateDTO(templateId, name, price, null, categoryId, null, null, description, false);
+            if (TemplateDAO.createNewTemplate(template, fileImgLink, fileZip, templateId, sc)) {
+                url = AppConstants.AddTemplateControllerFeature.SUCCESS+"?templateId="+template.getId();
+                out.print(template.getId());
+                out.print("Success");
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddTemplateController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddTemplateController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            out.print("<br> Redirecting to <a href=\""+url+"\">"+url+"</a>") ;
         }
     }
 

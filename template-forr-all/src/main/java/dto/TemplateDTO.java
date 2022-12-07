@@ -14,9 +14,10 @@ import utils.Helper;
  */
 public class TemplateDTO implements Serializable {
 
-    
+    public  static final String rarPath="assets/rar/";
+    public static final String imgPath="assets/images/template/";
 
-    int id;
+    Integer id;
     String name;
     Integer price;
     String resourcesLink;
@@ -59,6 +60,18 @@ public class TemplateDTO implements Serializable {
         this.price = price;
         this.imgLink = imgLink;
         this.resourcesLink = resourcesLink;
+        this.description = description;
+        this.isPay = isPay;
+    }
+
+    public TemplateDTO (Integer id, String name, Integer price, String resourcesLink, int categoryId, String imgLink, String categoryName, String description, boolean isPay) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.resourcesLink = resourcesLink;
+        this.categoryId = categoryId;
+        this.imgLink = imgLink;
+        this.categoryName = categoryName;
         this.description = description;
         this.isPay = isPay;
     }

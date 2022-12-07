@@ -11,6 +11,12 @@ package utils;
  */
 public class AppConstants {
 
+    public static class AddTemplateControllerFeature {
+
+        public static final String INVALID = "newtemplate.jsp";
+        public static final String SUCCESS = "displayTemplateDetail";
+    }
+
     public class DispatchFeaturess {
 
         public static final String LOGIN_PAGE = "";
