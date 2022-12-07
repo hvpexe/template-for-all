@@ -408,4 +408,46 @@ public class TemplateDAO implements Serializable {
         }
         return result;
     }
+
+    public static boolean createNewTemplate (TemplateDTO template) throws ClassNotFoundException, SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            //1. make connection
+            con = DBConnection.getConnection();
+            //2. write sql string
+            String sql = "INSERT INTO [dbo].[Template]\n"
+                    + "           ([name]\n"
+                    + "           ,[price]\n"
+                    + "           ,[link]\n"
+                    + "           ,[categoryId]\n"
+                    + "           ,[imgLink]\n"
+                    + "           ,[description])\n"
+                    + "     VALUES\n"
+                    + "           (?,?,?,?,?,?)";
+            //3. create statement obj           
+            ps = con.prepareStatement(sql);
+            ps.setString(1, template.getName());
+            ps.setInt(2, template.getPrice());
+            ps.setString(3, template.getResourcesLink());
+            ps.setInt(4, template.getCategoryId());
+            ps.setString(5, template.getImgLink());
+            ps.setString(6, template.getDescription());
+            //4. execute query            
+            return ps.executeUpdate() > 0;
+            //5. process rs
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
 }

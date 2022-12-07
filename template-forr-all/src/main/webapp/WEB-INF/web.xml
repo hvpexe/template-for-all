@@ -36,6 +36,10 @@
         <servlet-name>AddMoneyController</servlet-name>
         <servlet-class>controller.AddMoneyController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddTemplateController</servlet-name>
+        <servlet-class>controller.AddTemplateController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>searchController</servlet-name>
         <url-pattern>/searchController</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>AddMoneyController</servlet-name>
         <url-pattern>/AddMoneyController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTemplateController</servlet-name>
+        <url-pattern>/AddTemplateController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
