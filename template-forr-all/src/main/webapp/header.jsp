@@ -46,6 +46,13 @@
                                 Lịch sử giao dịch ${USER.isAdmin?'(Admin)':''}
                             </a>
                         </div>
+                        <c:if test="${USER.isAdmin}">
+                            <div class="list-group-item px-1 border-bottom history h-underline">
+                                <a href="AddTemplateController" class="h-underline" style="color: inherit">
+                                    Tải Lên Template 
+                                </a>
+                            </div>
+                        </c:if>
                         <div class="list-group-item px-1 border-0 logout">
                             <a href="LogoutController" class="h-underline" style="color: inherit">
                                 Đăng Xuất
