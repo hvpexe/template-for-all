@@ -28,14 +28,13 @@
         <main class="main gap-5 flex-column d-flex">
             <section class="section row">
                 <c:set var="templateDto" value="${requestScope.TEMPLATE}"></c:set>
-                    <div class="section-left col-12 col-md-6  d-flex align-content-center justify-content-center">
-                        <img src="${templateDto.imgLink}" width="100%">
+                <div class="section-left col-12 col-md-6  d-flex align-content-center justify-content-center" onclick="$('#fileImgLink').click()">
+                        <img src="${templateDto.imgLink}" width="100%"><input class="d-none" type="file" name="fileImgLink" id="fileImgLink" value=""/>
                 </div>
-                <div  class="section-right col-12 gap-2 col-md-6">
-                    <h1 class="h1 col-12 mb-5">${templateDto.name}</h1>
-                    <div class="text text-description text text-bold my-5 col-12 d-flex flex-column">
-                        ${templateDto.description}
-                    </div>
+                <div class="section-right col-12 gap-2 col-md-6">
+                    <input class="fs-1 col-12 text mb-5 fw-bold" name="txtName" value="${templateDto.name}">
+                    <textarea name="txtDescription" 
+                              class="text text-description fw-light my-5 col-12 d-flex flex-column">${templateDto.description}</textarea>
                     <div class="col-12 d-flex flex-wrap my-5 " style="gap:10px">
                         <span class="category fw-bold hb-1">Blue</span>
                         <span class="category fw-bold hb-1">Green</span>

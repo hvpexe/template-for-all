@@ -6,6 +6,8 @@
 package dao;
 
 import dto.TemplateDTO;
+import dto.UserDTO;
+import java.io.IOException;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +18,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
+import javax.servlet.ServletContext;
+import javax.servlet.http.Part;
 import utils.DBConnection;
+import utils.Helper;
 
 /**
  *
@@ -409,35 +414,43 @@ public class TemplateDAO implements Serializable {
         return result;
     }
 
-    public static boolean createNewTemplate (TemplateDTO template) throws ClassNotFoundException, SQLException {
-        Connection con = null;
+    public static boolean createNewTemplate (TemplateDTO template, Part fileImgLink, Part fileZip, Integer templateId,
+            ServletContext sc) throws ClassNotFoundException, SQLException, IOException {
+        Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             //1. make connection
-            con = DBConnection.getConnection();
+            conn = DBConnection.getConnection();
+            conn.setAutoCommit(false);
             //2. write sql string
             String sql = "INSERT INTO [dbo].[Template]\n"
                     + "           ([name]\n"
                     + "           ,[price]\n"
-                    + "           ,[link]\n"
                     + "           ,[categoryId]\n"
-                    + "           ,[imgLink]\n"
                     + "           ,[description])\n"
+                    + " OUTPUT inserted.id"
                     + "     VALUES\n"
-                    + "           (?,?,?,?,?,?)";
+                    + "           (?,?,?,?)";
             //3. create statement obj           
-            ps = con.prepareStatement(sql);
+            ps = conn.prepareStatement(sql);
             ps.setString(1, template.getName());
             ps.setInt(2, template.getPrice());
-            ps.setString(3, template.getResourcesLink());
-            ps.setInt(4, template.getCategoryId());
-            ps.setString(5, template.getImgLink());
-            ps.setString(6, template.getDescription());
+            ps.setInt(3, template.getCategoryId());
+            ps.setString(4, template.getDescription());
             //4. execute query            
-            return ps.executeUpdate() > 0;
-            //5. process rs
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                templateId = rs.getInt(1);
+                String filename = template.getName() + "_" + templateId;
+                addFileZip(fileZip, filename, conn, sc, templateId);
+                addFileImg(fileImgLink, filename, conn, sc, templateId);
+                template.setId(templateId);
+                conn.setAutoCommit(true);
+                return true;
+            }
 
+            //5. process rs
         } finally {
             if (rs != null) {
                 rs.close();
@@ -445,9 +458,55 @@ public class TemplateDAO implements Serializable {
             if (ps != null) {
                 ps.close();
             }
-            if (con != null) {
-                con.close();
+            if (conn != null) {
+                conn.close();
             }
         }
+        return false;
     }
+
+    private static boolean addFile (Part file, String filename, String filePath, Connection conn, ServletContext sc, Integer templateId, String sql) throws SQLException, ClassNotFoundException, IOException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            //1. make connection
+            conn.setAutoCommit(false);
+            //2. write sql string
+            //3. create statement obj           
+            ps = conn.prepareStatement(sql);
+
+            ps.setString(1, filePath+"/"+Helper.getFileType(filename, file));
+            ps.setInt(2, templateId);
+            //4. execute query
+            if (ps.executeUpdate() > 0) {
+                Helper.saveFile(filename, file, sc, filePath);
+                return true;
+            }
+            //5. process rs
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+
+        }
+        return false;
+    }
+
+    private static boolean addFileZip (Part fileZip, String filename, Connection conn, ServletContext sc, Integer templateId) throws SQLException, ClassNotFoundException, IOException {
+        String sql = "UPDATE Template\n"
+                + " SET link = ?\n"
+                + " WHERE id = ?";
+        return addFile(fileZip, filename, TemplateDTO.rarPath, conn, sc, templateId, sql);
+    }
+
+    private static boolean addFileImg (Part fileImgLink, String filename, Connection conn, ServletContext sc, Integer templateId) throws SQLException, ClassNotFoundException, IOException {
+        String sql = "UPDATE Template\n"
+                + " SET imgLink = ?\n"
+                + " WHERE id = ?";
+        return addFile(fileImgLink, filename, TemplateDTO.imgPath, conn, sc, templateId, sql);
+    }
+
 }
