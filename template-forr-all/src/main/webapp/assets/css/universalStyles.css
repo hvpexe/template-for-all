@@ -118,6 +118,26 @@ input:focus{
     border-color: #000000;
     transition: 0.1s;
 }
+select{
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    outline:none;
+}
+select:focus{
+    border-color: #000000;
+    transition: 0.1s;
+}
+textarea{
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    outline:none;
+}
+textarea:focus{
+    border-color: #000000;
+    transition: 0.1s;
+}
 i::before{
    position: static;
 }
