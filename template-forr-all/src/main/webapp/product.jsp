@@ -26,10 +26,16 @@
     <body class="container">
         <c:import url="header.jsp"/> 
         <main class="main gap-5 flex-column d-flex">
-            <section class="section row">
+            <section class="section row flex-wrap flex-md-nowrap">
                 <c:set var="templateDto" value="${requestScope.TEMPLATE}"></c:set>
-                    <div class="section-left col-12 col-md-6  d-flex align-content-center justify-content-center">
+                    <div class="section-left col-12 p-0 col-md-6 position-relative d-flex align-content-center justify-content-center">
                         <img src="${templateDto.imgLink}" width="100%">
+                    <c:if test="${sessionScope.USER.isAdmin}">
+                        <a href="ModifyTemplateController?templateId=${param.templateId}" 
+                           class="position-absolute button hb-1" id="edit-btn">
+                            Chỉnh Sửa
+                        </a>
+                    </c:if>
                 </div>
                 <div  class="section-right col-12 gap-2 col-md-6">
                     <h1 class="h1 col-12 mb-5">${templateDto.name}</h1>

@@ -55,7 +55,8 @@ public class TemplateDTO implements Serializable {
         this.description = description;
     }
 
-    public TemplateDTO (String name, int price, String resourcesLink, String imgLink, String description, boolean isPay) {
+    public TemplateDTO (int id,String name, int price, String resourcesLink, String imgLink, String description, boolean isPay) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.imgLink = imgLink;
@@ -75,6 +76,8 @@ public class TemplateDTO implements Serializable {
         this.description = description;
         this.isPay = isPay;
     }
+
+  
 
     public boolean isIsPay () {
         return isPay;

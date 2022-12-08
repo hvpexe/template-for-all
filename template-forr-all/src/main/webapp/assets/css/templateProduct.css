@@ -149,4 +149,58 @@
 select {
     border-radius: 8px;
 }
-#f6f7fb
+.hb-2:has(#image-template){
+    box-shadow: 0 0px 0px 0 inset var(--bs-gray-50);
+}
+.hb-2:has(#image-template):hover{
+    box-shadow: 0 0px 2em 1em inset var(--bs-gray-50);
+}
+.hb-2:has(#image-template):active{
+    box-shadow: 0 0px 2em 5em inset var(--bs-gray-50);
+}
+select{
+    background: #f6f7fb;
+    outline: 0;
+    border-radius: 0;
+
+}
+input:not([type=file]),textarea{
+    border: 0;
+    border-bottom: 2px solid gray;
+    background: #f6f7fb;
+    outline: 0;
+    box-sizing: border-box ;
+    border-radius: 0;
+    appearance: none;
+    color:#1D2B4F;
+}
+textarea{
+    min-height: calc(5em *1.4);
+}
+input[type=file]{
+    border:0;
+    border-radius: 0;
+
+}
+div.section-left #edit-btn{
+    transform-origin: top right;
+    scale:0 1;
+    transition:0.3s ease-out;
+}
+div.section-left:hover #edit-btn{
+    scale:1 1;
+}
+#edit-btn{
+    top:1%;
+    right:1%;
+    color:white;
+    text-decoration: none;
+}
+#image-template{
+    z-index: -1;
+
+    background: #f6f7fb;
+}
+#image-template[src='assets/images/figma/add-images.png']{
+    object-fit: scale-down;
+}

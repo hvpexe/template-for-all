@@ -36,8 +36,7 @@
                 <div class="user-navigation d-none position-absolute">
                     <div class="list-group row py-2  bg-transparent">
                         <div class="list-group-item px-1 border-top border-bottom gold">
-                            <a href="payment.jsp" class="h-underline" style="color: inherit">Gói Nâng Cao
-                            </a>
+                            <a href="payment.jsp" class="h-underline" style="color: inherit">Gói Nâng Cao</a>
                         </div>
                         <div class="list-group-item px-1 shopping">
                             <a href="displayMyLibraryPage" class="h-underline" style="color: inherit">Thư viện của tôi</a></div>
@@ -48,7 +47,7 @@
                         </div>
                         <c:if test="${USER.isAdmin}">
                             <div class="list-group-item px-1 border-bottom history h-underline">
-                                <a href="AddTemplateController" class="h-underline" style="color: inherit">
+                                <a href="ModifyTemplateController" class="h-underline" style="color: inherit">
                                     Tải Lên Template 
                                 </a>
                             </div>

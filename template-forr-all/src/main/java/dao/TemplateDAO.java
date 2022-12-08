@@ -135,7 +135,7 @@ public class TemplateDAO implements Serializable {
             //1. make connection
             con = DBConnection.getConnection();
             //2. write sql string
-            String sql = "select Template.name as templateName, price, link, imgLink, description, OrderDetail.userId\n"
+            String sql = "select Template.id,Template.name as templateName, price, link, imgLink, description, OrderDetail.userId\n"
                     + "from Template \n"
                     + "inner join Category on Template.categoryId=Category.id\n"
                     + "left join OrderDetail on OrderDetail.templateId = Template.id and OrderDetail.userId = ?\n"
@@ -148,6 +148,7 @@ public class TemplateDAO implements Serializable {
             rs = stm.executeQuery();
             //5. process rs            
             if (rs.next()) {
+                int id = rs.getInt("id");
                 String name = rs.getString("templateName");
                 int price = rs.getInt("price");
                 String resourcesLink = rs.getString("link");
@@ -158,7 +159,7 @@ public class TemplateDAO implements Serializable {
                 if (rs.getInt("userid") != 0) {
                     isPay = true;
                 }
-                result = new TemplateDTO(name, price, resourcesLink, link, description, isPay);
+                result = new TemplateDTO(id, name, price, resourcesLink, link, description, isPay);
             }// end process rs
         } finally {
             if (rs != null) {
@@ -375,7 +376,7 @@ public class TemplateDAO implements Serializable {
             //1. make connection
             con = DBConnection.getConnection();
             //2. write sql string
-            String sql = "select Template.name as templateName, price, link, imgLink, description, OrderDetail.userId\n"
+            String sql = "select Template.id,Template.name as templateName, price, link, imgLink, description, OrderDetail.userId\n"
                     + "from Template \n"
                     + "inner join Category on Template.categoryId=Category.id\n"
                     + "left join OrderDetail on OrderDetail.templateId = Template.id\n"
@@ -388,6 +389,7 @@ public class TemplateDAO implements Serializable {
             rs = stm.executeQuery();
             //5. process rs            
             if (rs.next()) {
+                int id = rs.getInt("id");
                 String name = rs.getString("templateName");
                 int price = rs.getInt("price");
                 String resourcesLink = rs.getString("link");
@@ -398,7 +400,7 @@ public class TemplateDAO implements Serializable {
                 if (rs.getInt("userid") != 0) {
                     isPay = true;
                 }
-                result = new TemplateDTO(name, price, resourcesLink, link, description, isPay);
+                result = new TemplateDTO(id, name, price, resourcesLink, link, description, isPay);
             }// end process rs
         } finally {
             if (rs != null) {
@@ -443,8 +445,58 @@ public class TemplateDAO implements Serializable {
             if (rs.next()) {
                 templateId = rs.getInt(1);
                 String filename = template.getName() + "_" + templateId;
-                addFileZip(fileZip, filename, conn, sc, templateId);
-                addFileImg(fileImgLink, filename, conn, sc, templateId);
+                modifyFileZip(fileZip, filename, conn, sc, templateId);
+                modifyFileImg(fileImgLink, filename, conn, sc, templateId);
+                template.setId(templateId);
+                conn.setAutoCommit(true);
+                return true;
+            }
+
+            //5. process rs
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return false;
+    }
+
+    public static boolean updateTemplate (TemplateDTO template, Part fileImgLink, Part fileZip, Integer templateId, ServletContext sc) throws ClassNotFoundException, SQLException, IOException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            //1. make connection
+            conn = DBConnection.getConnection();
+            conn.setAutoCommit(false);
+            //2. write sql string
+            String sql = "UPDATE [Template]\n"
+                    + "         SET [name] = ?\n"
+                    + "           ,[price] = ?\n"
+                    + "           ,[categoryId] = ?\n"
+                    + "           ,[description]= ?\n"
+                    + " WHERE id = ?";
+            //3. create statement obj           
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, template.getName());
+            ps.setInt(2, template.getPrice());
+            ps.setInt(3, template.getCategoryId());
+            ps.setString(4, template.getDescription());
+            ps.setInt(5, template.getId());
+            //4. execute query            
+            
+            if (ps.executeUpdate()>0) {
+                String filename = template.getName() + "_" + templateId;
+                if (!fileZip.getSubmittedFileName().isEmpty())
+                    modifyFileZip(fileZip, filename, conn, sc, templateId);
+                if (!fileImgLink.getSubmittedFileName().isEmpty())
+                    modifyFileImg(fileImgLink, filename, conn, sc, templateId);
                 template.setId(templateId);
                 conn.setAutoCommit(true);
                 return true;
@@ -475,7 +527,7 @@ public class TemplateDAO implements Serializable {
             //3. create statement obj           
             ps = conn.prepareStatement(sql);
 
-            ps.setString(1, filePath+"/"+Helper.getFileType(filename, file));
+            ps.setString(1, filePath + "/" + Helper.getFileType(filename, file));
             ps.setInt(2, templateId);
             //4. execute query
             if (ps.executeUpdate() > 0) {
@@ -495,14 +547,14 @@ public class TemplateDAO implements Serializable {
         return false;
     }
 
-    private static boolean addFileZip (Part fileZip, String filename, Connection conn, ServletContext sc, Integer templateId) throws SQLException, ClassNotFoundException, IOException {
+    private static boolean modifyFileZip (Part fileZip, String filename, Connection conn, ServletContext sc, Integer templateId) throws SQLException, ClassNotFoundException, IOException {
         String sql = "UPDATE Template\n"
                 + " SET link = ?\n"
                 + " WHERE id = ?";
         return addFile(fileZip, filename, TemplateDTO.rarPath, conn, sc, templateId, sql);
     }
 
-    private static boolean addFileImg (Part fileImgLink, String filename, Connection conn, ServletContext sc, Integer templateId) throws SQLException, ClassNotFoundException, IOException {
+    private static boolean modifyFileImg (Part fileImgLink, String filename, Connection conn, ServletContext sc, Integer templateId) throws SQLException, ClassNotFoundException, IOException {
         String sql = "UPDATE Template\n"
                 + " SET imgLink = ?\n"
                 + " WHERE id = ?";

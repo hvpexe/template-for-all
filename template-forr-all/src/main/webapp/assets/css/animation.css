@@ -55,10 +55,10 @@
     translate:0 -2px;
 }
 .hb-1:is(:hover , :focus){
-    box-shadow: 0 0 400px inset #00000025;
+    box-shadow: 0 -30px 400px -10px inset #00000033;
 }
 .hb-1:active{
-    box-shadow: 0 0 400px inset #00000050;
+    box-shadow: 0 -30px 400px -10px inset #00000066;
 
 }
 .hb-2:is(:hover , :focus){
